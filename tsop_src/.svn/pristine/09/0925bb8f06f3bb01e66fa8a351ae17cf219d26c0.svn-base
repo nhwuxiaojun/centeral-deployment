@@ -1,0 +1,4 @@
+name = Custom Import
+description = Custom import module to move from one install of Drupal to another.
+core = 7.x
+files[] = custom_import.module

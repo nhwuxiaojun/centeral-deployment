@@ -1,0 +1,25 @@
+Bem vindo ao paCRUD Framework!
+
+1. Sobre o paCRUD
+-----------------
+
+PHP Ajax CRUD é um Framework PHP/Ajax com funcionalidades CRUD (Create,
+Retrieve, Update e Delete) para desenvolvimento de sistemas de informação
+com bancos de dados PostgreSQL.
+
+O paCRUD é licenceado nos termos da GNU GENERAL PUBLIC LICENSE Version 3
+
+
+2. Instalação
+-------------
+
+Descompacte o paCRUD no seu disretório web e acesse via browser, siga as
+instruções apresentadas na tela.
+
+
+4. Links
+--------
+
+Site oficial do projeto: http://www.pacrud.com.br ou http://softwarelivre.org/pacrud
+Wiki: http://wiki.pacrud.com.br
+Código Fonte e Tracker: http://www.sourceforge.net/projects/pacrud

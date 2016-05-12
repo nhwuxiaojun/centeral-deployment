@@ -1,0 +1,11 @@
+export HOST=172.25.17.74
+export LOGID=aig_br_mcd_rp_pre_prod
+export SSHPASS=aig_br_mcd_rp_pre_prod
+export APP_PATH=/usr/local/aig_br_mcd_rp_pre_prod/IBM/WebSphere/AppServer/profiles/aig_br_mcd_rp_pre_prod
+export PATCH_PATH=$APP_PATH/deploy
+export DBUSER=AIG_BR_MCD_RP_PREPD
+export DBPASS=AIG_BR_MCD_RP_PREPDpwd
+export DBSID=g15u2
+export PROJNAME=AIG_BR_MCD_RP_PRE_PROD
+export TS=peng.xu
+export DM=lion.wu

@@ -1,0 +1,5 @@
+In this example we demonstrate how we can integrate a HTML editor in jqGrid form editiing module.
+
+For this purpose we create a custom element in the form and use a custom function to get and set the value in the server.
+
+The only what you need to know for the editor is how the value can be get and how can be updated when a new data comes from the grid.

@@ -1,0 +1,2 @@
+The Enabled property of each JQTreeNode instance can be set to mark the node as 
+enabled/disabled. Nodes that are disabled cannot be hovered, expanded, checked or selected.

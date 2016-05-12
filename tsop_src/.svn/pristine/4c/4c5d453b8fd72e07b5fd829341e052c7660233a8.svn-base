@@ -1,0 +1,1689 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: paCRUD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-27 17:06-0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Emerson Casas Salvador <salvaemerson@gmail.com>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: /var/www/pacrud/index.php:49
+msgid ""
+"Você instalou com sucesso o paCRUD Framework!<br />Siga instruções para a "
+"configuração inicial"
+msgstr ""
+
+#: /var/www/pacrud/index.php:50
+#, fuzzy
+msgid ""
+"Crie uma pasta \"app\" na raiz do framework, e copie os arquivos index.php e "
+"pacrud.php da pasta app.example, em seguida pressione F5 para recarregar "
+"esta página"
+msgstr ""
+"Creare una area chiamata  \"app\" nella radice del framework, servirà per "
+"mettere gli archivi della sua applicazione. Si deve copiare gli archivi "
+"index.php e pacrud.php dall'area app.example, facendo la configurazione "
+"necessaria nell'archivio  pacrud.php."
+
+#: /var/www/pacrud/index.php:51
+msgid ""
+"A tela de login será exibida, o usuário padrão é \"admin\" e a senha padrão "
+"também é \"admin\""
+msgstr ""
+
+#: /var/www/pacrud/index.php:52
+msgid ""
+"Use a pasta \"app\" para colocar os aquivos da sua aplicação, e o arquivo "
+"\"app/pacrud.php\" para configurar o acesso ao banco de dados do paCRUD "
+"Framework, as demais configurações você encontrará no painel de controle "
+"após fazer o login."
+msgstr ""
+
+#: /var/www/pacrud/index.php:74
+#: /var/www/pacrud/model/class_mariadb_connection.php:67
+#: /var/www/pacrud/model/class_pg_connection.php:67
+#: /var/www/pacrud/model/class_sqlite3_connection.php:63
+msgid "É necessário ativar a extensão %extension% no PHP"
+msgstr ""
+
+#: /var/www/pacrud/index.php:88
+msgid ""
+"ou utilizar outro servidor de banco de dados (MariaDB ou PostgreSQL) para a "
+"base de dados do paCRUD"
+msgstr ""
+
+#: /var/www/pacrud/index.php:89
+msgid "Mais detalhes você encontra nos comentários do arquivo app/pacrud.php"
+msgstr ""
+
+#: /var/www/pacrud/controller/routines_groups.php:36
+#: /var/www/pacrud/controller/routines_menus.php:37
+#: /var/www/pacrud/controller/search_routines.php:36
+#: /var/www/pacrud/controller/reg_menu.php:40
+#: /var/www/pacrud/dev/view_code_generator.php:110
+msgid "Rotina"
+msgstr "Procedimento di lavoro abituale"
+
+#: /var/www/pacrud/controller/routines_groups.php:37
+#: /var/www/pacrud/controller/syslogin_groups.php:37
+#: /var/www/pacrud/controller/groups_syslogin.php:36
+#: /var/www/pacrud/controller/groups.php:36 /var/www/pacrud/view/groups.php:42
+msgid "Nome do grupo"
+msgstr "Nome del gruppo"
+
+#: /var/www/pacrud/controller/routines_groups.php:38
+#: /var/www/pacrud/view/tab_routines.php:43
+msgid "Inserir"
+msgstr "Inserire"
+
+#: /var/www/pacrud/controller/routines_groups.php:39
+#: /var/www/pacrud/view/tab_routines.php:47
+msgid "Visualizar"
+msgstr "Visualizzare"
+
+#: /var/www/pacrud/controller/routines_groups.php:40
+#: /var/www/pacrud/model/class_crud.php:1309
+#: /var/www/pacrud/view/tab_routines.php:51
+msgid "Alterar"
+msgstr "Modificare"
+
+#: /var/www/pacrud/controller/routines_groups.php:41
+#: /var/www/pacrud/view/tab_routines.php:55
+msgid "Apagar"
+msgstr "Cancellare"
+
+#: /var/www/pacrud/controller/routines_menus.php:36
+#: /var/www/pacrud/controller/reg_menu.php:36
+msgid "Código"
+msgstr "Codice"
+
+#: /var/www/pacrud/controller/routines_menus.php:38
+msgid "cod"
+msgstr ""
+
+#: /var/www/pacrud/controller/routines_menus.php:39
+#: /var/www/pacrud/controller/reg_menu.php:38
+#: /var/www/pacrud/view/tab_routines.php:75
+#: /var/www/pacrud/view/reg_menu.php:57
+#, fuzzy
+msgid "Menu Pai"
+msgstr "Menu"
+
+#: /var/www/pacrud/controller/routines_menus.php:40
+#: /var/www/pacrud/controller/reg_menu.php:39
+#: /var/www/pacrud/dev/view_code_generator.php:227
+#: /var/www/pacrud/dev/view_code_generator.php:374
+#: /var/www/pacrud/view/tab_routines.php:79
+msgid "Rótulo"
+msgstr "Rotolo"
+
+#: /var/www/pacrud/controller/routines_menus.php:41
+#: /var/www/pacrud/controller/reg_menu.php:41
+msgid "Ícone"
+msgstr "Figura"
+
+#: /var/www/pacrud/controller/routines_menus.php:42
+#: /var/www/pacrud/controller/reg_menu.php:42
+#: /var/www/pacrud/view/tab_routines.php:92
+msgid "Aberto"
+msgstr "Aperto"
+
+#: /var/www/pacrud/controller/routines_menus.php:43
+#: /var/www/pacrud/controller/reg_menu.php:43
+msgid "Ativado"
+msgstr "Attivato"
+
+#: /var/www/pacrud/controller/users.php:48
+#: /var/www/pacrud/controller/syslogin_groups.php:36
+#: /var/www/pacrud/controller/groups_syslogin.php:37
+#: /var/www/pacrud/controller/search_users.php:36
+#: /var/www/pacrud/dev/view_login.php:54 /var/www/pacrud/view/login.php:71
+#: /var/www/pacrud/view/users.php:41 /var/www/pacrud/view/groups.php:60
+#: /var/www/pacrud/view/change_password.php:67
+msgid "Usuário"
+msgstr "Utente"
+
+#: /var/www/pacrud/controller/users.php:49
+#: /var/www/pacrud/controller/search_users.php:37
+#: /var/www/pacrud/view/users.php:45
+msgid "Nome completo"
+msgstr "Nome e cognome"
+
+#: /var/www/pacrud/controller/users.php:50
+#: /var/www/pacrud/controller/routines.php:39
+#: /var/www/pacrud/controller/routines.php:86
+#: /var/www/pacrud/controller/groups.php:37
+#: /var/www/pacrud/controller/search_users.php:38
+#: /var/www/pacrud/view/tab_routines.php:96 /var/www/pacrud/view/users.php:50
+#: /var/www/pacrud/view/routines.php:69 /var/www/pacrud/view/groups.php:47
+msgid "Ativo"
+msgstr "Attivo"
+
+#: /var/www/pacrud/controller/routines.php:36
+#: /var/www/pacrud/controller/routines.php:82
+#: /var/www/pacrud/view/routines.php:56
+msgid "Identificação"
+msgstr "Identificazione"
+
+#: /var/www/pacrud/controller/routines.php:37
+#: /var/www/pacrud/controller/routines.php:84
+#: /var/www/pacrud/view/routines.php:60
+msgid "Link"
+msgstr "Link"
+
+#: /var/www/pacrud/controller/routines.php:38
+#: /var/www/pacrud/controller/routines.php:85
+#: /var/www/pacrud/view/routines.php:64
+msgid "Descrição"
+msgstr "Descrizione"
+
+#: /var/www/pacrud/controller/routines.php:83
+#: /var/www/pacrud/controller/search_menus.php:37
+msgid "Menu"
+msgstr "Menu"
+
+#: /var/www/pacrud/controller/update_framework.php:32
+msgid "É necessário configurar o comando de atualização no painel de controle"
+msgstr ""
+"È necessario configurare il comando di attualizzazione nel panello di "
+"controllo"
+
+#: /var/www/pacrud/controller/search_groups.php:36
+#: /var/www/pacrud/view/tab_routines.php:38 /var/www/pacrud/view/users.php:63
+msgid "Grupo"
+msgstr "Gruppo"
+
+#: /var/www/pacrud/controller/search_groups.php:37
+#: /var/www/pacrud/controller/search_routines.php:37
+msgid "ativo"
+msgstr "Attivo"
+
+#: /var/www/pacrud/controller/search_routines.php:34
+#, fuzzy
+msgid "Buscar Rotina"
+msgstr "Procedimento di lavoro abituale"
+
+#: /var/www/pacrud/controller/change_password.php:37
+msgid "Sua sessão expirou, faça login novamente"
+msgstr "Il suo tempo è scaduto. Deve fare il codice nuovamente"
+
+#: /var/www/pacrud/controller/change_password.php:59
+msgid "A nova senha não pode ficar em branco."
+msgstr "Il nuovo codice segreto non può restare in bianco."
+
+#: /var/www/pacrud/controller/change_password.php:63
+msgid "A senha atual não confere."
+msgstr "Il codice segreto non é giusto."
+
+#: /var/www/pacrud/controller/change_password.php:67
+msgid "Senha alterada com sucesso!"
+msgstr "Codice segreto modificato con sucesso!"
+
+#: /var/www/pacrud/controller/update_app.php:33
+msgid ""
+"É necessário configurar o comando de atualização da aplicação no painel de "
+"controle"
+msgstr ""
+"È necessario configurare il comando di attualizzazione della applicazione "
+"nel panello di controllo"
+
+#: /var/www/pacrud/controller/reg_menu.php:34
+msgid "Configuração de Menu"
+msgstr "Configurazioni generali del menu"
+
+#: /var/www/pacrud/controller/reg_menu.php:37
+msgid "Cod Pai"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:51
+#: /var/www/pacrud/dev/view_index.php:125 /var/www/pacrud/view/page.php:30
+#: /var/www/pacrud/view/page.php:57
+msgid "Início"
+msgstr "Inizio"
+
+#: /var/www/pacrud/dev/view_index.php:52 /var/www/pacrud/view/page.php:33
+msgid "sair"
+msgstr "uscire"
+
+#: /var/www/pacrud/dev/view_index.php:59 /var/www/pacrud/dev/view_index.php:95
+msgid "Gerador de código"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:60
+#: /var/www/pacrud/dev/view_db_update.php:34
+#, fuzzy
+msgid "Atualização de banco de dados"
+msgstr "Attualizzazione di applicazione"
+
+#: /var/www/pacrud/dev/view_index.php:61 /var/www/pacrud/view/routines.php:50
+msgid "Rotinas, permissões e menus"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:62
+#, fuzzy
+msgid "Painel de controle"
+msgstr "Panello di controllo"
+
+#: /var/www/pacrud/dev/view_index.php:65
+msgid "Ir para o Sistema"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:92
+msgid ""
+"Bem vindo! Você está no ambiente de desenvolvimento paCRUD, um espaço onde "
+"estão agrupadas algumas ferramentas específicas para o desenvolvedor da "
+"aplicação."
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:93
+msgid ""
+"Todos os grupos de usuário que tiverem permissão de acesso a a rotina "
+"\"pacrud_devtools\" poderão acessar este ambiente de desenvolvimento."
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:96
+msgid ""
+"O Gerador de código é uma ferramenta prática para construir controllers para "
+"objetos paCRUD, pacrudSearch e pacrudList."
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:98
+#, fuzzy
+msgid "Atualização de Banco de dados"
+msgstr "Attualizzazione di applicazione"
+
+#: /var/www/pacrud/dev/view_index.php:99
+msgid ""
+"Ferramenta para empacotar comandos DDL SQL em arquivos php, dessa forma os "
+"comandos poderão fazer parte de um commit na sua ferramenta de controle de "
+"versão, e serão executados automaticamente na rotina de atualização após o "
+"seu script de atualização definido no painel de controle."
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:101
+msgid "Rotinas, Permissões e Menus"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:102
+msgid ""
+"Rotina é um tipo de entidade que suporta o cadastro de credenciais de acesso "
+"por grupo de usuário. Objetos como menus, formulários, arquivos view e "
+"controller podem ser vinculados a rotinas e assim serem protegidos de acordo "
+"com as credenciais de acesso."
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:104 /var/www/pacrud/view/menu_xml.php:60
+#: /var/www/pacrud/view/control_panel.php:67
+#: /var/www/pacrud/view/submission.php:37
+msgid "Painel de Controle"
+msgstr "Panello di controllo"
+
+#: /var/www/pacrud/dev/view_index.php:105
+#: /var/www/pacrud/view/submission.php:38
+msgid ""
+"No painel de controle você encontra alguns parâmetros e configurações para a "
+"sua aplicação. Você pode acessar o painel de controle através do menu "
+"sistema ou clicando <a href=\"index.php?page=pacrud_controlPanel\">aqui</a>."
+msgstr ""
+"Nel panello di controllo incontrerai qualche parametro e configurazione per "
+"la sua applicazione. Puoi acessare il panello di controllo attraverso il "
+"menù sistema o cliccando <a href=\"index.php?page=pacrud_controlPanel"
+"\">aqui</a>."
+
+#: /var/www/pacrud/dev/view_index.php:107
+msgid "phpinfo()"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:108
+msgid ""
+"Um atalho para a função phpinfo() do PHP, que só pode ser acessado se você "
+"estiver logado no paCRUD como desenvolvedor."
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:110
+msgid "pacrudInfo()"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:111
+msgid ""
+"Semelhante ao phpinfo, o pacrud oferece algumas informações e variáveis de "
+"ambiente fornecidas pelo framework."
+msgstr ""
+
+#: /var/www/pacrud/dev/view_index.php:113
+msgid "Área de trabalho"
+msgstr "Desktop"
+
+#: /var/www/pacrud/dev/view_index.php:114
+#, fuzzy
+msgid ""
+"A Área de trabalho é a primeira tela que é apresentada ao usuário após o "
+"login, ela pode facilmente ser personalizada. Basta criar um arquivo desktop."
+"php na raiz da sua aplicação com o conteúdo que você desejar."
+msgstr ""
+"La pagina che stai visualizzando è il desktop della sua applicazione, essa "
+"può essere facilmente personalizzata. Basta creare un file desktop.php nella "
+"root della sua applicazione con il contenuto che si desidera."
+
+#: /var/www/pacrud/dev/view_index.php:125 /var/www/pacrud/view/menu_xml.php:44
+#: /var/www/pacrud/view/change_password.php:63
+#: /var/www/pacrud/view/change_password.php:84
+#: /var/www/pacrud/view/page.php:58
+msgid "Alterar Senha"
+msgstr "Cambia password"
+
+#: /var/www/pacrud/dev/view_index.php:126 /var/www/pacrud/view/page.php:59
+msgid "Sair"
+msgstr "Uscire"
+
+#: /var/www/pacrud/dev/view_login.php:38
+msgid "Voltar para a tela inicial do Sistema"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_login.php:43
+msgid "Ferramentas de desenvolvimento paCRUD"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_login.php:50 /var/www/pacrud/view/login.php:70
+msgid "Autenticação"
+msgstr "Autenticazione"
+
+#: /var/www/pacrud/dev/view_login.php:58 /var/www/pacrud/view/login.php:73
+msgid "Senha"
+msgstr "Password"
+
+#: /var/www/pacrud/dev/ctrl_file_manager.php:13
+msgid "Arquivo não encontrado \""
+msgstr ""
+
+#: /var/www/pacrud/dev/ctrl_file_manager.php:21
+msgid "Sem permissão de escrita para o arquivo \"%filename%\"."
+msgstr ""
+
+#: /var/www/pacrud/dev/ctrl_file_manager.php:25
+msgid "Sem permissão de escrita na pasta \"app\"."
+msgstr ""
+
+#: /var/www/pacrud/dev/ctrl_db_update.php:11
+msgid "Diretório \"%dir%\" não possui permissão de escrita, nada feito!"
+msgstr ""
+
+#: /var/www/pacrud/dev/ctrl_db_update.php:18
+msgid "Erro ao criar o diretório \"%dir%\", nada feito!"
+msgstr ""
+
+#: /var/www/pacrud/dev/ctrl_db_update.php:39
+msgid "Erro ao gravar o arquivo \"%file%\"!"
+msgstr ""
+
+#: /var/www/pacrud/dev/ctrl_login.php:41
+#, fuzzy
+msgid "Acesso Negado!"
+msgstr "Acesso bloccato"
+
+#: /var/www/pacrud/dev/view_code_generator.php:71
+#, fuzzy
+msgid "Gerador de Código paCRUD Framework"
+msgstr "Benvenuto allo paCRUD Framework!"
+
+#: /var/www/pacrud/dev/view_code_generator.php:94
+#, fuzzy
+msgid "Nome do Objeto paCRUD"
+msgstr "Nome dell'ogetto"
+
+#: /var/www/pacrud/dev/view_code_generator.php:98
+#: /var/www/pacrud/dev/view_code_generator.php:319
+msgid "Título da Janela"
+msgstr "Titolo della finestra"
+
+#: /var/www/pacrud/dev/view_code_generator.php:102
+#: /var/www/pacrud/dev/view_code_generator.php:323
+msgid "Schema da Tabela"
+msgstr "Schema della tabella"
+
+#: /var/www/pacrud/dev/view_code_generator.php:106
+#: /var/www/pacrud/dev/view_code_generator.php:327
+msgid "Nome da Tabela"
+msgstr "Nome della Tabella"
+
+#: /var/www/pacrud/dev/view_code_generator.php:115
+msgid "Tudo maiúsculo para todos os campos"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_code_generator.php:122
+#, fuzzy
+msgid "Tipo de Relacionamento"
+msgstr "Relazionamento 1x1"
+
+#: /var/www/pacrud/dev/view_code_generator.php:136
+msgid "Objeto pai Relacionamento 1x1"
+msgstr "Ogetto padre del relazionamento 1x1"
+
+#: /var/www/pacrud/dev/view_code_generator.php:140
+msgid "Campo Condicional no Objeto Pai"
+msgstr "Campo condizionale dell 'ogetto padre"
+
+#: /var/www/pacrud/dev/view_code_generator.php:144
+msgid "Valor da Condição"
+msgstr "Qualitá della condizione"
+
+#: /var/www/pacrud/dev/view_code_generator.php:153
+#, fuzzy
+msgid "Objeto pai Relacionamento 1xN"
+msgstr "Ogetto padre del relazionamento 1x1"
+
+#: /var/www/pacrud/dev/view_code_generator.php:161
+#: /var/www/pacrud/dev/view_code_generator.php:334
+msgid "Qtd Linhas da Tabela"
+msgstr "Quantitá di linee della tabella"
+
+#: /var/www/pacrud/dev/view_code_generator.php:165
+msgid "Permissao Fixa"
+msgstr "Permesso fisso"
+
+#: /var/www/pacrud/dev/view_code_generator.php:169
+msgid "Incluir arquivo de cabeçalho"
+msgstr "Inserire archivio di testa"
+
+#: /var/www/pacrud/dev/view_code_generator.php:173
+msgid "Incluir arquivo de Rodapé"
+msgstr "Inserire archivio finale"
+
+#: /var/www/pacrud/dev/view_code_generator.php:177
+msgid "Ação ao duplicar registro"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_code_generator.php:189
+msgid "Possui Listagem"
+msgstr "Possedere una lista"
+
+#: /var/www/pacrud/dev/view_code_generator.php:193
+msgid "Desenhar Formulário"
+msgstr "Disegnare un formulario"
+
+#: /var/www/pacrud/dev/view_code_generator.php:197
+msgid "Auto Click"
+msgstr "Auto Click"
+
+#: /var/www/pacrud/dev/view_code_generator.php:201
+#: /var/www/pacrud/dev/view_code_generator.php:347
+msgid "Modo Depuração"
+msgstr "Modalità di pulizia"
+
+#: /var/www/pacrud/dev/view_code_generator.php:220
+#: /var/www/pacrud/dev/view_code_generator.php:367
+msgid "Chave Primária"
+msgstr "Chiave principale"
+
+#: /var/www/pacrud/dev/view_code_generator.php:223
+#: /var/www/pacrud/dev/view_code_generator.php:370
+msgid "Nome do campo"
+msgstr "Nome del campo"
+
+#: /var/www/pacrud/dev/view_code_generator.php:231
+#: /var/www/pacrud/dev/view_code_generator.php:378
+msgid "Tipo de dado"
+msgstr "Tipo di dati"
+
+#: /var/www/pacrud/dev/view_code_generator.php:234
+#: /var/www/pacrud/dev/view_code_generator.php:381
+msgid "texto"
+msgstr "testo"
+
+#: /var/www/pacrud/dev/view_code_generator.php:235
+#: /var/www/pacrud/dev/view_code_generator.php:382
+msgid "texto longo"
+msgstr "testo lungo"
+
+#: /var/www/pacrud/dev/view_code_generator.php:236
+#: /var/www/pacrud/dev/view_code_generator.php:383
+msgid "inteiro"
+msgstr "intero"
+
+#: /var/www/pacrud/dev/view_code_generator.php:237
+#: /var/www/pacrud/dev/view_code_generator.php:384
+msgid "inteiro auto incrementado"
+msgstr "intero auto incluso"
+
+#: /var/www/pacrud/dev/view_code_generator.php:238
+#: /var/www/pacrud/dev/view_code_generator.php:385
+msgid "numérico"
+msgstr "numerico"
+
+#: /var/www/pacrud/dev/view_code_generator.php:239
+#: /var/www/pacrud/dev/view_code_generator.php:386
+msgid "data"
+msgstr "data"
+
+#: /var/www/pacrud/dev/view_code_generator.php:240
+#: /var/www/pacrud/dev/view_code_generator.php:387
+msgid "hora"
+msgstr "ora"
+
+#: /var/www/pacrud/dev/view_code_generator.php:241
+#: /var/www/pacrud/dev/view_code_generator.php:388
+msgid "data e hora"
+msgstr "data e ora"
+
+#: /var/www/pacrud/dev/view_code_generator.php:242
+#: /var/www/pacrud/dev/view_code_generator.php:389
+msgid "boleano"
+msgstr "boolean"
+
+#: /var/www/pacrud/dev/view_code_generator.php:247
+msgid "Tamanho"
+msgstr "Misure"
+
+#: /var/www/pacrud/dev/view_code_generator.php:252
+msgid "Não pode ser nulo"
+msgstr "Non può essere vuoto"
+
+#: /var/www/pacrud/dev/view_code_generator.php:256
+msgid "Visível na listagem"
+msgstr "Visibile nella lista"
+
+#: /var/www/pacrud/dev/view_code_generator.php:260
+msgid "Somente leitura"
+msgstr "Solo lettura"
+
+#: /var/www/pacrud/dev/view_code_generator.php:264
+msgid "Tudo maiúsculo para este campo"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_code_generator.php:271
+msgid "id html"
+msgstr "id html"
+
+#: /var/www/pacrud/dev/view_code_generator.php:275
+msgid "Relação com pacrudSearch"
+msgstr "Relazione con PACRUDSEARCH"
+
+#: /var/www/pacrud/dev/view_code_generator.php:279
+msgid "Ordenação"
+msgstr "Ordinazione"
+
+#: /var/www/pacrud/dev/view_code_generator.php:283
+msgid "Valor padrão"
+msgstr "Valore base"
+
+#: /var/www/pacrud/dev/view_code_generator.php:288
+msgid "Campo Virtual (pertence a outra tabela)"
+msgstr "Campo virtuale ( inerente a un'altra tabella.)"
+
+#: /var/www/pacrud/dev/view_code_generator.php:292
+msgid "Não participa do Create"
+msgstr "Non partecipa del Create"
+
+#: /var/www/pacrud/dev/view_code_generator.php:296
+msgid "Não desenhar o campo na tela"
+msgstr "Non disegnare il campo nella tela"
+
+#: /var/www/pacrud/dev/view_code_generator.php:315
+msgid "Nome do Objeto"
+msgstr "Nome dell'ogetto"
+
+#: /var/www/pacrud/dev/view_code_generator.php:339
+msgid "Modal"
+msgstr "Modo"
+
+#: /var/www/pacrud/dev/view_code_generator.php:343
+msgid "Auto Filtro"
+msgstr "Auto Filtro"
+
+#: /var/www/pacrud/dev/view_code_generator.php:395
+msgid "Visível"
+msgstr "Visibile"
+
+#: /var/www/pacrud/dev/view_code_generator.php:414
+#, fuzzy
+msgid "Código da VIEW"
+msgstr "Codice"
+
+#: /var/www/pacrud/dev/view_code_generator.php:415
+#, fuzzy
+msgid "Código DDL"
+msgstr "Codice HTML"
+
+#: /var/www/pacrud/dev/view_db_update.php:37
+msgid "Cole na caixa de texto o código DDL de atualização do banco de dados:"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_db_update.php:41
+msgid "Considerar que este script já foi executado na base de dados atual"
+msgstr ""
+
+#: /var/www/pacrud/dev/view_db_update.php:42
+#, fuzzy
+msgid "Gravar script"
+msgstr "Registrare"
+
+#: /var/www/pacrud/model/class_filter.php:81
+msgid "Pesquisar"
+msgstr "Ricerca"
+
+#: /var/www/pacrud/model/class_filter.php:82
+msgid "Todos"
+msgstr "Tutti"
+
+#: /var/www/pacrud/model/class_filter.php:84
+#: /var/www/pacrud/model/class_crud.php:1311
+msgid "Inserir Novo"
+msgstr "Inserire Nuovo"
+
+#: /var/www/pacrud/model/class_filter.php:87
+msgid "Cadastrar"
+msgstr "Registrare"
+
+#: /var/www/pacrud/model/class_crud_list.php:48
+msgid "Propriedade xmlFile não especificada para objeto pacrudSearch"
+msgstr "Proprietà xmlFile non specificata per oggetto"
+
+#: /var/www/pacrud/model/class_crud_list.php:385
+#: /var/www/pacrud/model/class_search.php:528
+#: /var/www/pacrud/model/class_search.php:553
+#: /var/www/pacrud/model/class_crud.php:641
+#: /var/www/pacrud/model/class_crud.php:765
+#: /var/www/pacrud/model/class_crud.php:790
+#: /var/www/pacrud/model/class_crud.php:856
+#: /var/www/pacrud/model/class_crud.php:903
+msgid "Sua sessão expirou, faça login novamente."
+msgstr "Il suo tempo é scaduto. Deve fare il codice nuovamente"
+
+#: /var/www/pacrud/model/class_mariadb_connection.php:81
+#: /var/www/pacrud/model/class_mariadb_connection.php:93
+#: /var/www/pacrud/model/class_pg_connection.php:89
+#: /var/www/pacrud/model/class_sqlite3_connection.php:97
+msgid "Problema de conectividade com o servidor de banco de dados"
+msgstr "problema di connettività con il server dello database"
+
+#: /var/www/pacrud/model/functions_globals.php:567
+#, fuzzy
+msgid "Sua sessão expirou, faça login novamente!"
+msgstr "Il suo tempo è scaduto. Deve fare il codice nuovamente"
+
+#: /var/www/pacrud/model/functions_globals.php:572
+#: /var/www/pacrud/model/class_crud.php:768
+msgid "Acesso Negado"
+msgstr "Acesso bloccato"
+
+#: /var/www/pacrud/model/class_login.php:113
+msgid "Usuário ou senha incorreta"
+msgstr "Utente o password non corretta"
+
+#: /var/www/pacrud/model/class_sqlite3_connection.php:79
+msgid "O arquivo \"%fileName%\" não possui permissão de escrita"
+msgstr ""
+
+#: /var/www/pacrud/model/class_sqlite3_connection.php:85
+msgid "O arquivo \"%fileName%\" nao existe"
+msgstr ""
+
+#: /var/www/pacrud/model/class_crud.php:658
+#, fuzzy
+msgid "Registro duplicado."
+msgstr "Records trovati"
+
+#: /var/www/pacrud/model/class_crud.php:910
+msgid "Registro excluído com sucesso!"
+msgstr "Record eliminato con successo!"
+
+#: /var/www/pacrud/model/class_crud.php:915
+msgid "paCRUD Error: beforeDelete retornou false para objeto \":o:\"!"
+msgstr "paCRUD Errore: beforeDelete é ritornato  false per l'ogetto  \":o:\"!"
+
+#: /var/www/pacrud/model/class_crud.php:1162
+msgid "Campos de preenchimento obrigatório"
+msgstr "Campi di compilazione obbligatori"
+
+#: /var/www/pacrud/model/class_crud.php:1296
+msgid "Gravar"
+msgstr "Registrare"
+
+#: /var/www/pacrud/model/class_crud.php:1297
+msgid "Copiar de"
+msgstr "Copia di"
+
+#: /var/www/pacrud/model/class_crud.php:1298
+msgid "Limpar"
+msgstr "Pulire"
+
+#: /var/www/pacrud/model/class_crud.php:1299
+#: /var/www/pacrud/model/class_crud.php:1308
+#, fuzzy
+msgid "Listar"
+msgstr "Lista"
+
+#: /var/www/pacrud/model/class_crud.php:1303
+msgid "Gravar Alterações"
+msgstr "Salva le modifiche"
+
+#: /var/www/pacrud/model/class_crud.php:1304
+msgid "Cancelar"
+msgstr "Cancellare"
+
+#: /var/www/pacrud/model/class_crud.php:1310
+msgid "Excluir"
+msgstr "Cancellare"
+
+#: /var/www/pacrud/model/class_crud.php:1769
+msgid "Código SQL executado"
+msgstr "Codice SQL finalizzato"
+
+#: /var/www/pacrud/view/login.php:69
+msgid "Acessar"
+msgstr "Accesso"
+
+#: /var/www/pacrud/view/update.php:31
+msgid "Atualização"
+msgstr "Attualizzazione"
+
+#: /var/www/pacrud/view/tab_routines.php:29
+#: /var/www/pacrud/view/tab_routines.php:33
+msgid "Permissões por grupo de usuário"
+msgstr "Permesso per gruppo di utenti"
+
+#: /var/www/pacrud/view/tab_routines.php:30
+#: /var/www/pacrud/view/tab_routines.php:68
+msgid "Entradas no menu"
+msgstr "Entrata del Menu"
+
+#: /var/www/pacrud/view/users.php:36 /var/www/pacrud/view/menu_xml.php:72
+msgid "Usuários"
+msgstr "Utenti"
+
+#: /var/www/pacrud/view/users.php:59
+#, fuzzy
+msgid "Grupos que este usuário participa"
+msgstr "Gruppi di utenti"
+
+#: /var/www/pacrud/view/users.php:75 /var/www/pacrud/view/routines.php:79
+#: /var/www/pacrud/view/groups.php:72
+#: /var/www/pacrud/view/change_password.php:88
+#: /var/www/pacrud/view/reg_menu.php:92
+msgid "campos de preenchimento obrigatório"
+msgstr "campi obbligatori"
+
+#: /var/www/pacrud/view/routines.php:57
+msgid "Não usar espaços"
+msgstr "Non usare spazio"
+
+#: /var/www/pacrud/view/menu_xml.php:43
+msgid "SISTEMA"
+msgstr "SISTEMA"
+
+#: /var/www/pacrud/view/menu_xml.php:48
+msgid "Configuração do menu"
+msgstr "Inpostazioni generali"
+
+#: /var/www/pacrud/view/menu_xml.php:52 /var/www/pacrud/view/groups.php:36
+msgid "Grupos de Usuários"
+msgstr "Gruppi di utenti"
+
+#: /var/www/pacrud/view/menu_xml.php:56
+msgid "Instruções iniciais"
+msgstr "Guida introduttiva"
+
+#: /var/www/pacrud/view/menu_xml.php:64
+msgid "Rotinas"
+msgstr "Procedimento di lavoro abituale"
+
+#: /var/www/pacrud/view/menu_xml.php:68 /var/www/pacrud/view/about.php:78
+msgid "Sobre o paCRUD"
+msgstr "Riguardo a paCRUD"
+
+#: /var/www/pacrud/view/menu_xml.php:78
+msgid "CADASTROS"
+msgstr "REGISTRI"
+
+#: /var/www/pacrud/view/menu_xml.php:79
+msgid "Pessoas"
+msgstr "Persone"
+
+#: /var/www/pacrud/view/menu_xml.php:80
+msgid "Pessoa Jurídica"
+msgstr "Persona Giuridica"
+
+#: /var/www/pacrud/view/menu_xml.php:84
+msgid "Pessoa Física"
+msgstr "Persona Fisica"
+
+#: /var/www/pacrud/view/menu_xml.php:90
+msgid "Lugares"
+msgstr "Luoghi"
+
+#: /var/www/pacrud/view/menu_xml.php:94
+msgid "Coisas"
+msgstr "Cose"
+
+#: /var/www/pacrud/view/menu_xml.php:100
+msgid "DIRETO"
+msgstr "DIRETTO"
+
+#: /var/www/pacrud/view/menu_xml.php:104
+msgid "MENU SEM ICONE"
+msgstr "MENU SENZA ICONA"
+
+#: /var/www/pacrud/view/menu_xml.php:105 /var/www/pacrud/view/menu_xml.php:110
+#: /var/www/pacrud/view/menu_xml.php:111 /var/www/pacrud/view/menu_xml.php:112
+#: /var/www/pacrud/view/menu_xml.php:113 /var/www/pacrud/view/menu_xml.php:114
+msgid "Exemplo de nível"
+msgstr "Esempio di livello"
+
+#: /var/www/pacrud/view/menu_xml.php:109
+msgid "MENU DE EXEMPLO"
+msgstr "MENU DI EXEMPIO"
+
+#: /var/www/pacrud/view/update_framework.php:52
+msgid "Atualização do paCRUD Framework"
+msgstr "Attualizzazione del paCRUD Framework!"
+
+#: /var/www/pacrud/view/update_framework.php:55
+#: /var/www/pacrud/view/update_app.php:55
+msgid "Executar"
+msgstr "Finalizzare"
+
+#: /var/www/pacrud/view/groups.php:56
+msgid "Usuários que participam deste grupo"
+msgstr ""
+
+#: /var/www/pacrud/view/control_panel.php:75
+msgid "CONFIGURAÇÕES DA APLICAÇÃO"
+msgstr "Configurazione di applicazione."
+
+#: /var/www/pacrud/view/control_panel.php:87
+msgid "CONFIGURAÇÕES DO FRAMEWORK"
+msgstr "Configurazione del FRAMEWORK"
+
+#: /var/www/pacrud/view/control_panel.php:100
+msgid "Mais temas"
+msgstr "Altri assunti "
+
+#: /var/www/pacrud/view/control_panel.php:130
+#: /var/www/pacrud/view/control_panel.php:144
+#: /var/www/pacrud/view/control_panel.php:158
+#: /var/www/pacrud/view/control_panel.php:172
+#, fuzzy
+msgid "BD do Framework"
+msgstr "Idioma dello Framework"
+
+#: /var/www/pacrud/view/control_panel.php:196
+msgid "BANCO DE DADOS DA APLICAÇÃO"
+msgstr "Insieme di dati della Applicazione."
+
+#: /var/www/pacrud/view/control_panel.php:245
+#: /var/www/pacrud/view/control_panel.php:259
+#: /var/www/pacrud/view/control_panel.php:273
+#: /var/www/pacrud/view/control_panel.php:287
+#, fuzzy
+msgid "BD da Aplicação"
+msgstr "Attualizzazione di applicazione"
+
+#: /var/www/pacrud/view/change_password.php:71
+msgid "Senha Atual"
+msgstr "Codice segreto attuale"
+
+#: /var/www/pacrud/view/change_password.php:75
+msgid "Nova Senha"
+msgstr "Nuovo codice segreto"
+
+#: /var/www/pacrud/view/change_password.php:79
+msgid "Repita a nova senha"
+msgstr "Ripetere il codice segreto"
+
+#: /var/www/pacrud/view/about.php:79
+msgid "Versão"
+msgstr "Versione"
+
+#: /var/www/pacrud/view/about.php:80
+msgid "Site do projeto"
+msgstr "Sito dello progetto"
+
+#: /var/www/pacrud/view/about.php:81
+msgid "O que é paCRUD?"
+msgstr "Che cosa è paCRUD?"
+
+#: /var/www/pacrud/view/about.php:82
+#, fuzzy
+msgid ""
+"é um Framework PHP/Ajax com funcionalidades CRUD (Create, Retrieve, Update e "
+"Delete) para desenvolvimento rápido de sistemas de informação com bancos de "
+"dados PostgreSQL ou MariaDB."
+msgstr ""
+"é un Framework PHP/Ajax com funcionalidades CRUD (Create, Retrieve, Update e "
+"Delete) per il disinvolvimento rapido di un sistema di informazione com un "
+"banco di dati PostgreSQL ou MySQL."
+
+#: /var/www/pacrud/view/about.php:83
+msgid ""
+"A missão do projeto paCRUD, é potencializar a eficiência do desenvolvedor de "
+"sistemas de informação, separando as regras de negócio da programação das "
+"funcionalidades comuns aos SIs, através de um Framework Ajax leve e fácil de "
+"usar."
+msgstr ""
+"la missione del progetto paCRUD é potenzializzare l'efficienza del "
+"disinvolvidore del sistema di informazione ,separando le regole del negozio "
+"della programmazione delle funcionalitá comuni al SIs , attraverso un "
+"Framework Ajax  leggero e facile d'uso."
+
+#: /var/www/pacrud/view/about.php:84
+msgid "Tecnologias envolvidas no projeto paCRUD"
+msgstr "Tecnologie coinvolte nel progetto paCRUD"
+
+#: /var/www/pacrud/view/about.php:85
+msgid ""
+"A direita você pode observar o conjunto de tecnologias envolvidas no projeto."
+msgstr ""
+"A destra si puó osservare l'insieme della tecnologia coinvolta nel progetto."
+
+#: /var/www/pacrud/view/about.php:86
+msgid ""
+"Na parte superior, estão os logos das tecnologias que o paCRUD depende ou "
+"suporta. O paCRUD respeita os padrões WEB para garantir\tque sua aplicação "
+"irá rodar em qualquer browser que também esteja dentro das normas."
+msgstr ""
+"Nella parte superiore,ci sono i logo delle tecnologie che il paCRUD dipende "
+"o supporta. Il PACRUD rispetta le norme WEB che garantiscono la sua "
+"applicazione .Puó essere usato su qualsiasi browser che stia anche nel "
+"rispetto delle regole."
+
+#: /var/www/pacrud/view/about.php:87
+msgid ""
+"Embaixo do logo paCRUD, estão as tecnologias que utilizamos no "
+"desenvolvimento do framework."
+msgstr ""
+"Sotto il logo paCRUD, ci sono le tecnologie che utiliziamo per lo sviluppo "
+"dello framework."
+
+#: /var/www/pacrud/view/submission.php:29
+msgid "Bem vindo ao paCRUD Framework!"
+msgstr "Benvenuto allo paCRUD Framework!"
+
+#: /var/www/pacrud/view/submission.php:31
+#, fuzzy
+msgid ""
+"A equipe paCRUD preparou para você, algumas ferramentas que permitirão "
+"personalizar sua aplicação. Veja a seguir algumas dicas de como utilizar o "
+"paCRUD Framework."
+msgstr ""
+"La squadra paCRUD ha preparato per te, alcuni strumenti che consentono di "
+"personalizzare l'aspetto dell'applicazione. A seguire  alcuni suggerimenti "
+"su come impostare il paCRUD Framework."
+
+#: /var/www/pacrud/view/submission.php:33
+msgid "Por onde começar?"
+msgstr ""
+
+#: /var/www/pacrud/view/submission.php:34
+msgid ""
+"Se você é desenvolvedor, acesse a <a href=\"index.php?page=pacrud_devtools"
+"\">ferramenta de desenvolvimento paCRUD</a>, lá você encontra gerador de "
+"código, ferramenta de gestão de atualizações de bancos de dados e outras "
+"informações úteis para o desenvolvedor. Por padrão o usuário admin participa "
+"do grupo \"dev\" e portanto tem acesso as ferramentas de desenvolvimento. "
+"Todos os usuários cadastrados no grupo \"dev\" terão acesso a estas "
+"ferramentas."
+msgstr ""
+
+#: /var/www/pacrud/view/submission.php:35
+msgid ""
+"Se você é sysadmin, a seguir, uma breve explicação sobre configurações do "
+"ambiente, controle de acesso, temas e atualizações."
+msgstr ""
+
+#: /var/www/pacrud/view/submission.php:40
+msgid "Pasta de trabalho"
+msgstr "Area di lavoro"
+
+#: /var/www/pacrud/view/submission.php:41
+#, fuzzy
+msgid ""
+"Existe um arquivo na raiz do paCRUD denominado \"config_default.php\", "
+"semelhante o app/pacrud.php. Atenção não altere este arquivo, ele poderá ser "
+"sobrescrito quando você atualizar o paCRUD. Mantenha suas configurações no "
+"arquivo app/pacrud.php."
+msgstr ""
+"Esiste un archivio nella radice del paCRUD nominato \"config_default.php\", "
+"simile al app/pacrud.php. Attenzione non modificare questo archivio, può "
+"essere sottoscritto quando attualizzeraI il paCRUD. Mantenere tutte le sua "
+"configurazioni nel suo app/pacrud.php."
+
+#: /var/www/pacrud/view/submission.php:43
+#, fuzzy
+msgid "Controle de acesso"
+msgstr "Menu di controlo e di acesso"
+
+#: /var/www/pacrud/view/submission.php:44
+msgid ""
+"As permissões de acesso são definidas por rotina x grupo de usuário, dessa "
+"forma, para que um usuário tenha permissão de acesso à determinada rotina, "
+"basta que ele participe de um grupo que tenha permissão cadastrada."
+msgstr ""
+
+#: /var/www/pacrud/view/submission.php:45
+msgid ""
+"Um usuário pode participar de vários grupos, portanto suas permissões são a "
+"união das permissões de todos os grupos em que ele participa."
+msgstr ""
+
+#: /var/www/pacrud/view/submission.php:47
+msgid "Suporte a Temas"
+msgstr ""
+
+#: /var/www/pacrud/view/submission.php:48
+msgid ""
+"Altere a aparência da sua aplicação usando o suporte a temas, disponível no "
+"painel de controle. Para instalar novos temas, basta descompactar em \"themes"
+"\" dentro da pasta do framework. Você também pode criar seu tema "
+"personalizado, utilize o tema default ou qualquer outro tema como base."
+msgstr ""
+
+#: /var/www/pacrud/view/submission.php:50
+msgid "Atualizações automatizadas"
+msgstr ""
+
+#: /var/www/pacrud/view/submission.php:51
+msgid ""
+"É possível fazer atualização do framework e da sua aplicação de forma "
+"automatizada acessando o menu \"Atualização\"."
+msgstr ""
+
+#: /var/www/pacrud/view/submission.php:52
+msgid ""
+"Para tanto, você deve criar um script de acordo com o sistema operacional do "
+"servidor de aplicação, que faça a atualização via controle de versão "
+"Subversion ou GIT, ajuste de permissões e o que mais você achar importante."
+msgstr ""
+
+#: /var/www/pacrud/view/submission.php:53
+msgid ""
+"Feito isso, basta configurar as opções commandPacrudUpdate e "
+"commandAppUpdate no painel de controle com os scripts que você criou. O "
+"paCRUD fará uma chamada de sistema para estes scripts ao clicar no botão "
+"\"Atualizar\"."
+msgstr ""
+
+#: /var/www/pacrud/view/update_app.php:52
+msgid "Atualização da Aplicação"
+msgstr "Attualizzazione di applicazione"
+
+#: /var/www/pacrud/view/loading.php:30
+msgid "Carregando"
+msgstr "Caricamento in corso"
+
+#~ msgid "Buscar"
+#~ msgstr "Ricercare"
+
+#~ msgid "Objetos \"paCRUD\""
+#~ msgstr "Ogetto  \"paCRUD\""
+
+#, fuzzy
+#~ msgid "Modo Avançado"
+#~ msgstr "Avanzare"
+
+#, fuzzy
+#~ msgid "Gerar código PHP para este objeto (controller)"
+#~ msgstr "Vedere il codice PHP per questo oggetto"
+
+#, fuzzy
+#~ msgid "Gerar código HTML para este objeto (view)"
+#~ msgstr "Vedere il codice PHP per questo oggetto"
+
+#, fuzzy
+#~ msgid "Gerar código DDL SQL para este objeto"
+#~ msgstr "Vedere il codice DDL SQL per questo ogetto"
+
+#~ msgid "Executar código DDL SQL para este objeto"
+#~ msgstr "Finalizzare il codice DDL SQL per questo ogetto"
+
+#, fuzzy
+#~ msgid "Gerar comandos SQL Insert para este objeto"
+#~ msgstr "Vedere il comando SQL Insert  per questo ogetto"
+
+#~ msgid "Campos do objeto CRUD"
+#~ msgstr "Campo dell'ogetto CRUD"
+
+#~ msgid "Objetos \"pacrudSearch\""
+#~ msgstr "Ogetto \"pacrudSearch\""
+
+#~ msgid "Campos do objeto \"pacrudSearch\""
+#~ msgstr "Campo del'ogetto \"pacrudSearch\""
+
+#~ msgid ""
+#~ "O paCRUD possui um sistema de menus dinâmicos, é possível definir "
+#~ "permissões de acesso por grupos de usuários, de maneira que cada grupo de "
+#~ "tenha seu menu personalizado, basta cadastrar suas configurações de "
+#~ "acesso no menu sistema"
+#~ msgstr ""
+#~ "Il paCRUD possiede un sistema di menu dinamico , é possibile definire "
+#~ "permessi di acesso per gruppi di usuari, nella maniera che ogni gruppo "
+#~ "abbia il suo menu personalizzato, serve soltanto iscrivere le "
+#~ "configurazioni di acesso nel menu sistema"
+
+#~ msgid "Clique aqui"
+#~ msgstr " Clicca qui"
+
+#~ msgid ""
+#~ "para conhecer melhor a ferramenta de controle de acesso e gerenciamento "
+#~ "de menus."
+#~ msgstr ""
+#~ "Per conoscere meglio le funzioni di controllo di acesso e supervisione "
+#~ "del menu."
+
+#~ msgid ""
+#~ "Outra opção é criar um menu estático em formato XML, se essa for a sua "
+#~ "escolha crie um arquivo menu.xml na pasta app seguindo o mesmo formato do "
+#~ "menu de exemplo que pode pode ser acessado em %s. Recomendamos salvar o "
+#~ "conteúdo deste link com o nome menu.xml e fazer alterações de acordo com "
+#~ "suas necessidades."
+#~ msgstr ""
+#~ "Un altra opzione é creare un menu statico, in formato XML. Se la scelta é "
+#~ "questa bisogna creare un archivio menu.xml nella scheda app seguendo lo "
+#~ "stesso formato del menu di esempio che si può accedere a %s. Si consiglia "
+#~ "di salvare il contenuto di questo link con il nome menu.xml e effettuare "
+#~ "modifiche in base alle proprie esigenze."
+
+#, fuzzy
+#~ msgid "Erro de conexão com o banco de dados %db%"
+#~ msgstr "Errore nella creazione del database"
+
+#~ msgid "Campo Virtual"
+#~ msgstr "Campo Virtuale"
+
+#~ msgid "nohtml"
+#~ msgstr "nohtml"
+
+#~ msgid "Objetos paCRUD"
+#~ msgstr "Ogetti paCRUD"
+
+#~ msgid "Nome do objeto"
+#~ msgstr "Nome dell'ogetto"
+
+#~ msgid "Tabela"
+#~ msgstr "Tabella"
+
+#~ msgid "Objetos pacrudSearch"
+#~ msgstr "Ogetto pacrudSearch"
+
+#~ msgid "Relacionamento 1xN"
+#~ msgstr "Relazionamento 1xN"
+
+#~ msgid "Criando seu primeiro objeto CRUD"
+#~ msgstr "Creando il suo primo ogetto CRUD"
+
+#~ msgid ""
+#~ "No wiki paCRUD você encontra instruções de como criar seu primeiro objeto "
+#~ "CRUD e outros tutoriais."
+#~ msgstr ""
+#~ "Nel  wiki paCRUD  puoi incontrare le istruzioni di come creare il suo "
+#~ "primo ogetto CRUD e altre funzioni avanzate."
+
+#~ msgid "Pai"
+#~ msgstr "Padre"
+
+#~ msgid ""
+#~ "Uma configuração que pode ser útil é o opened=\"1\" no seu arquivo xml, "
+#~ "ele serve para definir se o menu será desenhado aberto (mostrando o "
+#~ "submenu) ou fechado (nesse caso o submenu será aberto quando o usuário "
+#~ "clicar no menu)."
+#~ msgstr ""
+#~ "Una configurazione che possa essere utile è il opened=\"1\" nel suo file "
+#~ "xml, esso serve per definire se il menu sarà disegnato aperto (mostrando "
+#~ "il sottomenu) o chiuso (in questo caso il sottomenu sarà aperto quando lo "
+#~ "utente fa il clic sul menu)."
+
+#~ msgid "Visualizador de Temas"
+#~ msgstr "Visualizattore di Temi"
+
+#~ msgid "Opções"
+#~ msgstr "Opzioni"
+
+#~ msgid "Escolha um tema"
+#~ msgstr "Scegli un tema"
+
+#~ msgid "Visualizar Tema Selecionado"
+#~ msgstr "Visualizza Tema Selezionato"
+
+#~ msgid "Esta é a área de trabalho da sua aplicação."
+#~ msgstr "Questo è il desktop della vostra applicazione."
+
+#~ msgid "Configurações gerais"
+#~ msgstr "Impostazioni generali"
+
+#~ msgid "Gerar Arquivos de configuração"
+#~ msgstr "Genera file di configurazione"
+
+#~ msgid ""
+#~ "Permissão negada, digite o seguinte comando para habilitar a escrita na "
+#~ "pasta \"%s\""
+#~ msgstr ""
+#~ "Permesso negato, digitare il seguente comando per abilitare la scrittura "
+#~ "nella cartella \"%s\""
+
+#~ msgid "Em Seguida pressione F5 para atualizar"
+#~ msgstr "Di seguito premere F5 per aggiornare"
+
+#~ msgid "Criando usuário"
+#~ msgstr "Crea utente"
+
+#~ msgid "Erro ao criar usuário"
+#~ msgstr "Errore nella creazione dell'utente"
+
+#~ msgid "Criando banco de dados"
+#~ msgstr "Crea database"
+
+#~ msgid "Criando tabelas do paCRUD no banco de dados"
+#~ msgstr "Creazione delle tabelle paCRUD nel database"
+
+#~ msgid "Erro ao criar tabelas no banco de dados"
+#~ msgstr "Errore durante la creazione delle tabelle nel database"
+
+#~ msgid ""
+#~ "Os arquivos foram gravados na pasta \"example\", copie-os para a pasta da "
+#~ "sua aplicação"
+#~ msgstr ""
+#~ "I file sono stati salvati nel \"esample\", copiarli nella cartella della "
+#~ "sua applicazione"
+
+#~ msgid "Está pronto!"
+#~ msgstr "è concluso!"
+
+#~ msgid "para acessar sua aplicação"
+#~ msgstr "Per avere accesso alla sua applicazione"
+
+#~ msgid "Gravando arquivo"
+#~ msgstr "File Saving"
+
+#~ msgid "não remover estas linhas"
+#~ msgstr "Non rimuovere queste righe"
+
+#~ msgid "instalação abortada"
+#~ msgstr "installazione interrotta"
+
+#~ msgid "sgdb não suportado"
+#~ msgstr "DBMS non supportato"
+
+#~ msgid "desconhecido para pacrudError"
+#~ msgstr "sconosciuto per pacrudError"
+
+#~ msgid "Problema de conectividade com o banco de dados para o usuário"
+#~ msgstr "problema di connettività con il database per l'utente"
+
+#~ msgid "Seu browser não suporta Ajax XMLHttpRequest"
+#~ msgstr "Il Suo browser non supporta Ajax XMLHttpRequest"
+
+#~ msgid "Erro ao obter os dados de "
+#~ msgstr "Errore per ottenere dati di "
+
+#~ msgid "Formato desconhecido \""
+#~ msgstr "Formato sconosciuto \""
+
+#~ msgid "Formato XML inválido para \""
+#~ msgstr "Formato XML non valido per \""
+
+#~ msgid "Mostrando de"
+#~ msgstr "Visualizzazione di"
+
+#~ msgid "Página"
+#~ msgstr "Pagina"
+
+#~ msgid "de"
+#~ msgstr "da"
+
+#~ msgid "até"
+#~ msgstr "fino"
+
+#~ msgid "contém"
+#~ msgstr "contiene"
+
+#~ msgid "não contém"
+#~ msgstr "non contiene"
+
+#~ msgid "começa com"
+#~ msgstr "inizia con"
+
+#~ msgid "termina com"
+#~ msgstr "finisce con"
+
+#~ msgid "não começa com"
+#~ msgstr "non inizia con"
+
+#~ msgid "não termina com"
+#~ msgstr "non finisce con"
+
+#~ msgid "igual a"
+#~ msgstr "pari a"
+
+#~ msgid "diferente de"
+#~ msgstr "diverso di"
+
+#~ msgid "menor que"
+#~ msgstr "minore di"
+
+#~ msgid "maior que"
+#~ msgstr "maggiore di"
+
+#~ msgid "menor ou igual a"
+#~ msgstr "minore o pari a"
+
+#~ msgid "maior ou igual a"
+#~ msgstr "maggiore o pari a"
+
+#~ msgid ""
+#~ "Campo \"%fieldName%\" não encontrado, verifique a chamada \"addFieldReturn"
+#~ "\" do objeto \"%objName%\""
+#~ msgstr ""
+#~ "Campo \"%fieldName%\" non trovato, controllare la nota \"addFieldReturn\" "
+#~ "del oggetto \"%objName%\""
+
+#~ msgid ""
+#~ "Estado desconhecido para objeto paCRUD: stateChange('\"%newState%\"')"
+#~ msgstr "Stado sconosciuto per oggeto paCRUD: stateChange('\"%newState%\"')"
+
+#~ msgid "Falta preencher alguns campos"
+#~ msgstr "Manca completare alcuni campi"
+
+#~ msgid "Campo \"%fieldLabel%\" não pode ficar em branco"
+#~ msgstr "Campo \"%fieldLabel%\" non può rimanere vuoto"
+
+#~ msgid ""
+#~ "Campo com propriedade \"fieldId\" duplicado entre objetos \"%crudParent%"
+#~ "\" e \"%crudSon%\" fieldId=\"%fieldId%\""
+#~ msgstr ""
+#~ "Campo della proprietà \"fieldId\" raddoppiato tra gli oggetti "
+#~ "\"%crudParent%\" e \"%crudSon%\" fieldId=\"%fieldId%\""
+
+#~ msgid "Administrador do sistema"
+#~ msgstr "Amministradore dello sistema"
+
+#~ msgid "Escolha um idioma"
+#~ msgstr "Scegli una lingua"
+
+#~ msgid "Reconfigurar parâmetros"
+#~ msgstr "Reimpostare i parametri"
+
+#~ msgid "Configurações de conectividade"
+#~ msgstr "Impostazioni di connettività"
+
+#~ msgid "Configurações Iniciais"
+#~ msgstr "Impostazioni iniziali"
+
+#~ msgid "Concluir"
+#~ msgstr "è concluso"
+
+#~ msgid "Arquivo Base"
+#~ msgstr "File di Base"
+
+#~ msgid "Instruções Finais"
+#~ msgstr "Instruzioni Finale"
+
+#~ msgid "Suas configurações foram gravadas na pasta \"%configured_files%\""
+#~ msgstr ""
+#~ "Le impostazioni sono state salvate nella cartella \"%configured_files%\""
+
+#~ msgid "Mova os arquivos para a pasta da sua aplicação com o comando"
+#~ msgstr "Spostare i file alla cartella della Sua applicazione con il comando"
+
+#~ msgid "Em seguida"
+#~ msgstr "In seguito"
+
+#~ msgid ""
+#~ "<b>paCRUD - PHP Ajax CRUD Framework</b> é um Framework PHP/Ajax com "
+#~ "funcionalidades CRUD (Create, Retrieve, Update e Delete) para "
+#~ "desenvolvimento rápido de sistemas de informação com bancos de dados "
+#~ "PostgreSQL ou MySQL."
+#~ msgstr ""
+#~ "<b>paCRUD - PHP Ajax CRUD Framework</b> è uno Framework PHP/Ajax con "
+#~ "funcionalità CRUD (Create, Retrieve, Update e Delete) per il rapido "
+#~ "sviluppo dei sistemi informativi con i database PostgreSQL ou MySQL."
+
+#~ msgid ""
+#~ "A missão do projeto paCRUD, é potencializar a eficiência do desenvolvedor "
+#~ "de sistemas de informação, separando completamente as regras de negócio "
+#~ "da programação das funcionalidades comuns aos SIs, através de um "
+#~ "Framework Ajax leve e fácil de usar."
+#~ msgstr ""
+#~ "La missione del progetto paCRUD, è quello di rafforzare la efficienza "
+#~ "dello sviluppatore di sistemi informativi, separando completamente le "
+#~ "regole di business della programmazione delle funzionalità comuni al SIs, "
+#~ "attraverso un Framework Ajax agevole e facile da usare."
+
+#~ msgid "A direita você pode observar a \"salada tecnológica paCRUD\"."
+#~ msgstr "Alla destra potete vedere la \"Insalata tecnologica paCRUD\"."
+
+#~ msgid "Missão paCRUD"
+#~ msgstr "Missione paCRUD"
+
+#~ msgid ""
+#~ "A missão do projeto paCRUD, é potencializar a eficiência do desenvolvedor "
+#~ "de sistemas de informação, separando completamente as regras de negócio "
+#~ "da programação das funcionalidades comuns aos SIs, através de um "
+#~ "Framework Ajax leve e fácil de usar"
+#~ msgstr ""
+#~ "La missione del progetto paCRUD, è quello di  migliorare la efficienza di "
+#~ "degli sviluppatori dei sistemi informativi, separando completamente le "
+#~ "regole di business della programmazione delle caratteristiche comuni al "
+#~ "SIs, attraverso il Framework Ajax agevole e facile da usare"
+
+#~ msgid ""
+#~ "O projeto paCRUD está alinhado a missão da CONSOLI que é \"promover a "
+#~ "troca de conhecimento acerca do software livre entre os integrantes, "
+#~ "principalmente o conhecimento tácito (conhecimento da pessoa). Um espaço "
+#~ "onde este conhecimento possa ser movimentado e transferido entre os "
+#~ "membros\"."
+#~ msgstr ""
+#~ "Il progetto paCRUD è allineato con la missione della CONSOLI che è "
+#~ "\"promuovere lo scambio di conoscenze di software libero tra i membri, in "
+#~ "particolare la conoscenza tacita (conoscenza della persona). Un posto "
+#~ "dove questa conoscenza può essere gestita e trasferiti tra i membri\"."
+
+#~ msgid "Arquivo de Configuração"
+#~ msgstr "File di Configurazione"
+
+#~ msgid ""
+#~ "O arquivo de configuração do paCRUD é o \"pacrud.php\", que foi gerado "
+#~ "pelo assistente de instalação e movido para a pasta raiz da sua "
+#~ "aplicação. Neste arquivo estão contidas as configurações do framework, "
+#~ "como nome da sua aplicação, idioma etc."
+#~ msgstr ""
+#~ "Il file di configurazione paCRUD è il \"pacrud.php\", che è stato "
+#~ "generato dalla procedura guidata di installazione e spostato per la "
+#~ "cartella principale della sua applicazione. In questo file contengono le "
+#~ "impostazioni dello framework, come il nome della applicazione, "
+#~ "linguaggio, ecc."
+
+#~ msgid ""
+#~ "Existe um arquivo na raiz do paCRUD denominado \"config_default.php\", "
+#~ "que contém praticamente os mesmos parâmetros do seu pacrud.php. Atenção "
+#~ "<b>não altere este arquivo</b>, ele poderá ser sobrescrito quando você "
+#~ "atualizar o paCRUD. Mantenha todas as suas configurações no seu pacrud."
+#~ "php. Caso você precise alterar algum parâmetro que existe no "
+#~ "config_default.php mas não existe no seu pacrud.php, copie o parâmetro "
+#~ "para o seu arquivo pacrud.php fazendo a alteração nele."
+#~ msgstr ""
+#~ "Cè un file nella root del paCRUD chiamato \"config_default.php\", che "
+#~ "contiene praticamente gli stessi parametri del suo pacrud.php. Attenzione "
+#~ "<b>Non modificare questo file</b>, potrà sovrascrivere mentre aggiorni il "
+#~ "paCRUD. Tieni tutte le sue impostazioni sul vostro pacrud.php. Se è "
+#~ "necessario modificare alcuni parametri esistente in config_default.php ma "
+#~ "non esiste nel suo pacrud.php, copia il parametro per il suo file pacrud."
+#~ "php apportando modifiche ad esso."
+
+#~ msgid ""
+#~ "Um menu de exemplo é disponibilizado juntamente com o paCRUD, e você pode "
+#~ "criar seu menu personalizado. Existem duas formas de fazê-lo, menu "
+#~ "dinâmico ou estático."
+#~ msgstr ""
+#~ "Un menu di esempio è offerto insieme al paCRUD, ed è possibile creare il "
+#~ "suo menu personalizzato. Ci sono due modi per farlo, menu statico o "
+#~ "dinamico."
+
+#~ msgid ""
+#~ "Você também pode criar um menu dinâmico com suas regras de negócio "
+#~ "específicas. A forma de fazêlo é muito semelhante ao menu estático, a "
+#~ "diferença é que ao invés de criar um arquivo menu.xml, você deverá criar "
+#~ "um arquivo menu_xml.php na raiz da sua aplicação. Este script php deverá "
+#~ "ser capaz de montar o xml com o mesmo formato."
+#~ msgstr ""
+#~ "Puoi anche creare un menu dinamico con le proprie regole specifiche di "
+#~ "business. Il modo per farlo è molto simile al menu statico, la differenza "
+#~ "è che invece di creare un file menu.xml, è necessario creare un file di "
+#~ "menu_xml.php nello root della vostra applicazione. Questo script php "
+#~ "dovrebbe essere in grado di montare il xml con lo stesso formato."
+
+#~ msgid "Nome para a identificação da sua aplicação ou sigla. Ex: CPFACIL"
+#~ msgstr "Nome per identificare la applicazione o la sigla. Es:CPFACIL"
+
+#~ msgid "O nome completo da aplicação. Ex: Controle de Produtos Fácil"
+#~ msgstr ""
+#~ "Il nome completo della applicazione. Es: Controllo Facile di Prodotti"
+
+#~ msgid ""
+#~ "Caminho completo da pasta onde encontran-sem os arquivos do paCRUD "
+#~ "Framework no sistema de arquivos. O paCRUD é capaz de detectar "
+#~ "autometicamente e sugerir esta configuração"
+#~ msgstr ""
+#~ "Percorso completo della cartella in cui si trova i file paCRUD Framework "
+#~ "nel file system.  Il paCRUD è in grado di rilevare automaticamente e "
+#~ "suggerire questa impostazione"
+
+#~ msgid ""
+#~ "Caminho da pasta onde encontran-sem os arquivos do paCRUD Framework na "
+#~ "web (Ex: http://meusite.com/pacrud ficaria /pacrud). O paCRUD é capaz de "
+#~ "detectar autometicamente e sugerir esta configuração"
+#~ msgstr ""
+#~ "Percorso della cartella in cui ci sono i file dello paCRUD Framework "
+#~ "nella web (Es: http://meusite.com/pacrud ficaria /pacrud). Il paCRUD è in "
+#~ "grado di rilevare automaticamente e suggerire questa impostazione."
+
+#~ msgid ""
+#~ "Caminho completo da pasta onde encontran-sem os arquivos da aplicação no "
+#~ "sistema de arquivos. Recomendamos não usar a mesma pasta do paCRUD"
+#~ msgstr ""
+#~ "Percorso completo della cartella in cui i file della applicazione sono "
+#~ "nel file system. Si consiglia di non utilizzare la stessa cartella dello "
+#~ "paCRUD"
+
+#~ msgid ""
+#~ "Caminho da pasta onde encontran-sem os arquivos da aplicação na web (Ex: "
+#~ "http://meusite.com/ ficaria /)."
+#~ msgstr ""
+#~ "Percorso della cartella in cui i file si trovano sul applicazione web "
+#~ "(Ex: http://meusite.com/ ficaria /)."
+
+#~ msgid ""
+#~ "Caso deseje \"reciclar\" seu pacrud.php, informe o caminho completo no "
+#~ "sistema de arquivos ou utilize \"config_default.php\" para usar uma "
+#~ "configuração padrão como base"
+#~ msgstr ""
+#~ "Nel caso si desidera \"reciclare\" suo pacrud.php, inserire il percorso "
+#~ "completo nel file system o usare \"config_default.php\" per utilizzare un "
+#~ "impostazione predefinita come base"
+
+#~ msgid "Tema da aplicação que define layout, cores etc"
+#~ msgstr "Tema della applicazione que definisce il layout, colori ecc"
+
+#~ msgid "Sistema Gerenciador de Banco de Dados da aplicação"
+#~ msgstr "Sistema Gestore di Database della applicazione"
+
+#~ msgid "Endereço IP ou hostname do servidor do banco de dados"
+#~ msgstr "Indirizzo IP o hostname del server dello database"
+
+#~ msgid "Porta do SGDB"
+#~ msgstr "Porta del SGDB"
+
+#~ msgid "Nome do banco de dados da aplicação"
+#~ msgstr "Nome dello database della applicazione"
+
+#~ msgid ""
+#~ "Habilite caso deseje que o paCRUD crie o banco de dados informado em "
+#~ "\"dbName\""
+#~ msgstr ""
+#~ "Attiva se si desidera che il paCRUD crea il database segnalato in \"dbName"
+#~ "\""
+
+#~ msgid ""
+#~ "Habilite caso deseje que o paCRUD crie a estrutura de tabelas básica do "
+#~ "paCRUD Framework no banco de dados"
+#~ msgstr ""
+#~ "Attiva se si desidera che il paCRUD crea la struttura di base delle "
+#~ "tabelle del paCRUD Framework nel database"
+
+#~ msgid ""
+#~ "Nome do usuário administrador do banco de dados usado apenas para criar o "
+#~ "banco de dados. Esta configuração não será gravada no seu arquivo pacrud."
+#~ "php"
+#~ msgstr ""
+#~ "Nome dello utente amministratore del database utilizzato solo per creare "
+#~ "il database. Questa configurazione non verrà registrata nel suo file "
+#~ "pacrud.php"
+
+#~ msgid ""
+#~ "Senha do usuário administrador do banco de dados usada apenas para criar "
+#~ "o banco de dados. Esta configuração não será gravada no seu arquivo "
+#~ "pacrud.php"
+#~ msgstr ""
+#~ "Password dello utente amministratore del database utilizzato solo per "
+#~ "creare il database. Questa configurazione non verrà registrata nel suo "
+#~ "file pacrud.php"
+
+#~ msgid "Usuário do banco de dados utilizado pela aplicação"
+#~ msgstr "Utente del database utilizzato per la applicazione"
+
+#~ msgid ""
+#~ "Habilite caso deseje que o paCRUD crie o usuário informado em \"dbUserName"
+#~ "\""
+#~ msgstr ""
+#~ "Attiva se si desidera che il paCRUD crea lo utente segnalato in "
+#~ "\"dbUserName\""
+
+#~ msgid "Senha do usuário informado no campo \"dbUserName\""
+#~ msgstr "Password dello utente segnalato sul campo \"dbUserName\""
+
+#~ msgid ""
+#~ "Para PostgreSQL utiliza um schema default para as tabelas da aplicação, "
+#~ "utilize public caso não deseje utilizar schemas. Para bancos que não "
+#~ "suportam schemas coloca um prefixo no inicio do nome das tabelas ex: "
+#~ "myschema_products, deixe em branco caso não deseje utilizar o prifixo"
+#~ msgstr ""
+#~ "Per PostgreSQL utilizza utilizza uno schema predefinito per le tabelle di "
+#~ "applicazione, usare public, in caso non desideri utilizzare gli schemi. "
+#~ "Per i database che non supportano schemi, metti un prefisso  all inizio "
+#~ "del nome delle tabelle, ad esempio: myschema_products, lasciare vuoto se "
+#~ "non si desidera utilizzare il prefisso"
+
+#~ msgid ""
+#~ "Mesmo caso do parâmetro \"appSchema\", porém aplica-se as tabelas do "
+#~ "paCRUD. Você pode ter mais de uma aplicação com paCRUD compartilhando a "
+#~ "mesma base de dados sem compartilhar as configurações do paCRUD como "
+#~ "usuários e permissões, para tanto basta criar aplicações distintas "
+#~ "informando a mesma base de dados e um \"loginSchema\" diferente para cada "
+#~ "aplicação."
+#~ msgstr ""
+#~ "Stesso caso del parametro \"appSchema\", però si applica le tabelle dello "
+#~ "paCRUD. È possibile avere più di una applicazione con paCRUD condividendo "
+#~ "la stessa base di dati senza condividere le impostazioni del paCRUD come "
+#~ "utenti e permessi, per farlo basta creare applicazioni distinte "
+#~ "dichiarando  la stessa base di dati ed uno \"loginSchema\" diversa per "
+#~ "ogni applicazione."
+
+#~ msgid ""
+#~ "Se habilitado será exibido o logotipo do projeto paCRUD embaixo do menu e "
+#~ "na tela de login"
+#~ msgstr ""
+#~ "Se attivato viene esibito il logo dello progetto paCRUD sotto il menu e "
+#~ "nella schermata di login"
+
+#~ msgid "Redirecionamento em caso de login com sucesso"
+#~ msgstr "Redirezione in caso di login effetuato con successo"
+
+#~ msgid "Página que será mostrada no corpo da aplicação"
+#~ msgstr "Pagina che verrà presentata nel corpo dell applicazione."
+
+#~ msgid "Quantidade padrão para o pacrudSearch e pacrudCrudList"
+#~ msgstr "Quantità standard per il pacrudSearch e il pacrudCrudList"

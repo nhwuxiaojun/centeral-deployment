@@ -1,0 +1,255 @@
+body,.dialog_box_body
+{
+	margin: 0px;
+	background-color: #F6F6F6;
+	font-family: Tahoma, "宋体";
+}
+
+td,th,li,p,div,input
+{
+	font-size: 12px;
+	font-family: Tahoma, "宋体";
+}
+
+.admin_top,.logout
+{
+	color: #FFFFFF;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+	background-color: #505F94;
+}
+
+.logout
+{
+	text-align: right;
+}
+
+/* 亮链接样式 */
+.logout a:hover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.logout a:link
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.logout a:visited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+/* -----------*/
+
+.admin_top_line
+{
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #999999;
+}
+
+
+/* 表格选择框 */
+.link_box_over
+{
+	border: 1px solid #CCCCCC;
+	cursor: pointer;
+	text-align: center;
+	background-color: #F6F6F6;
+}
+
+.link_box_out
+{
+	color: #333333;
+	border: 1px solid #EEEEEE;
+	text-align: center;
+}
+
+/* 一般链接样式 */
+a:link { color:black; text-decoration:none; }
+a:visited { color:black; text-decoration:none; }
+a:active { color:black; text-decoration:none; }
+a:hover { color:#666666; text-decoration:none; }
+
+/* 亮链接样式 */
+.light_link a:hover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.light_link a:link
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.light_link a:visited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+/* 表格选择框 */
+.link_frame_over
+{
+	border: 1px solid #999999;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	background-color: #F6F6F6;
+	filter:alpha(opacity=60);
+	opacity: 0.6;
+	moz-opacity: 0.60;
+}
+
+.link_frame_out
+{
+	color: #333333;
+	border: 1px solid #F6F6F6;
+	text-decoration: none;
+	text-align: center;
+}
+
+/* 表格选择框 */
+.system_frame_over
+{
+	border: 1px solid #999999;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	background-color: #DDDDDD;
+}
+
+.system_frame_out
+{
+	color: #333333;
+	border: 1px solid #EFEFEF;
+	text-decoration: none;
+	text-align: center;
+}
+
+/* 管理表格样式 */
+.table_1_style
+{
+	color:#FFFFFF;
+	background-color: #505F94;
+	width: 96%;
+}
+
+.table_2_style 
+{
+	color:#FFFFFF;
+	background-color: #FFFFFF;
+}
+
+.td_1_style 
+{
+	color:#000000;
+	background-color: #efefef;
+}
+
+.td_2_style 
+{
+	color:#000000;
+	background-color: #F5F5F5;
+}
+
+.td_3_style 
+{
+	background-color: #505F94;
+}
+
+.td_4_style 
+{
+	color:#000000;
+	background-color: #DEDEDE;
+	text-align: center;
+}
+
+.td_light_style 
+{
+	color:#000000;
+	background-color: #ECEEF4;
+}
+
+.toolbar_top 
+{
+	background-color: #EEEEEE;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+}
+
+.toolbar_bottom 
+{
+	background-color: #EEEEEE;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #CCCCCC;
+}
+
+form
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+.input_button
+{
+/*	color:#FFFFFF;*/
+/*	background-color: #505F94;*/
+	font-family: Tahoma, "宋体";
+	font-size: 12px;
+	border: 1px solid #666666;
+}
+
+/* 输入框 */
+.input_text
+{
+/*	height: 18px;*/
+	font-family: Tahoma, "宋体";
+	font-size: 12px;
+	border: 1px solid #666666;
+	margin: 0px;
+	padding: 2px;
+}
+
+/* dialog 浏览目录部分文件加样式 */
+
+.dialog_box_body
+{
+	margin: 3px;
+	background-color: #FFFFFF;
+}
+
+/* 文件DIV分割 */
+.dialog_box_compart
+{
+	width: 140;
+	height: 20;
+	text-align: left;			
+	float: left;
+	font: 9pt Tahoma;
+	margin: 0px;
+	overflow: hidden;
+	cursor: default;
+}
+
+/* 选择框 */
+.dialog_box_border
+{
+	border: 1px solid #CCCCCC;
+}
+
+/**/
+.image_preview
+{
+	border: 1px solid #000000;
+	cursor: pointer;
+}

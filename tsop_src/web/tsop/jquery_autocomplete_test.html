@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>AutoComplate</title>
+
+<script type="text/javascript" src="scripts/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="scripts/jquery-ui-1.11.1/jquery-ui.js"></script>
+    <link rel="Stylesheet" href="scripts/jquery-ui-1.11.1/jquery-ui.css" />
+    <script type="text/javascript">
+        $(function() {
+            var data = "Core Selectors Attributes Traversing Manipulation CSS Events Effects Ajax Utilities".split(" ");
+
+            $('#keyword').autocomplete(data).result(function(event, data, formatted) {
+                alert(data);
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <input id="keyword" />
+        <input id="getValue" value="GetValue" type="button" />
+    </div>
+    </form>
+</body>
+</html>

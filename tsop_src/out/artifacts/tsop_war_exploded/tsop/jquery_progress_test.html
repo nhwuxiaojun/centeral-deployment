@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>Javascript Progress Bar Demo - jb51.net</title> 
+        <script type="text/javascript" src="http://www.jb51.net/jslib/jquery/jquery.js"></script> 
+        <style type="text/css"> 
+            #progress {background: white; height: 20px; padding: 2px; border: 1px solid green; margin: 2px;} 
+            #progress span {background: green; height: 16px; text-align: center; padding: 1px; margin: 1px; 
+                display: block; color: yellow; font-weight: bold; font-size: 14px; width: 0%;} 
+        </style> 
+
+        <script type="text/javascript"> 
+
+            var progress_node_id = "progress"; 
+            function SetProgress(progress) { 
+                if (progress) { 
+                    $("#" + progress_node_id + " > span").css("width", String(progress) + "%"); 
+                    $("#" + progress_node_id + " > span").html(String(progress) + "%"); 
+                } 
+            } 
+
+            var i = 0; 
+            function doProgress() { 
+                if (i > 100) { 
+                    alert("Progress Bar Finished!"); 
+                    return; 
+                } 
+
+                if (i <= 100) { 
+                    setTimeout("doProgress()", 500); 
+                    SetProgress(i); 
+                    i++; 
+                } 
+            } 
+
+            $(document).ready(function() { 
+                doProgress(); 
+            }); 
+        </script> 
+</head> 
+
+<body> 
+    <h1>Javascript ½ø Demo</h1> 
+    <p>ԭÀ¾ÍÇ¹Ó Javascript ¿ØÆSPAN CSS µĿí£¨Ò¼°ÆËµÄù£¬ÏϸÐϢ¿ÉԲμû£º<a  
+href="http://www.jb51.net/article/13993.htm">http://www.jb51.net/article/13993.htm</a></p> 
+    <div id="progress"><span> </span></div> 
+</body> 
+</html> 
+
+

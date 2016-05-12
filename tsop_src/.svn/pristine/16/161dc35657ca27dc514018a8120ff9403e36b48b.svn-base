@@ -1,0 +1,201 @@
+<%@ include file="interface/check.jsp"%>
+<%@ page import="java.sql.ResultSet,java.sql.ResultSetMetaData" contentType="text/html; charset=gbk" errorPage=""%>
+<%@ page import="java.util.*,javax.mail.*,javax.mail.internet.*,javax.activation.*" %>
+<%@ page import="java.io.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="ebao.DBean" %>
+<%@ page import="ebao.DBADBean" %>
+<%@ page import="ebao.Tools" %>
+
+<%
+	DBean db = new DBean();
+	String sql = new String();
+	String db_str = new String();
+	String sql2 = new String();
+	String sql3 = new String();
+	String sql4 = new String();
+	ResultSet rs;
+	ResultSet rs2;
+	ResultSet rs3,rs4;
+//sql="select * from a_proj_env_svr where mac_ip='"+request.getParameter("mac_ip")+"' and env_ip='"+request.getParameter("env_ip")+"'";
+//sql = "select b.*, a.backup_type from a_apply a, a_proj_env_svr b where a.new_env(+) = b.proj_env and b.env_id = " + request.getParameter("id");
+//sql = "select b.*, a.backup_type from a_apply a, ts_env b where a.new_env(+) = b.proj_env and b.env_id = " + request.getParameter("id");
+	sql="select e.proj_name,a.env_ip,a.WEB_INST_PATH,a.HTML_PATH,a.app_type,a.APP_INST_PATH,a.APP_PORT,a.inc_deploy_para,a.full_deploy_para,c.db_ldap_name,c.DB_USER,c.DB_USER_PASSWD,a.ENV_USR,a.ENV_PWD,e.proj_grp,a.app_url,a.CREATER,a.create_date,a.PROPOSER,a.ENV_STATE,e.proj_id,a.DMS_TYPE,a.PRINT_TYPE,a.print_ip,d.env_name,f.print_user,f.print_pwd,a.print_dir  from ts_env_app a, ts_db b, ts_env_db c, ts_env d, ts_proj e, ts_print f where a.db_ldap_name = b.LDAP_NAME(+)   and a.env_id = c.env_id(+)   and a.env_id = d.env_id(+)   and d.proj_id = e.proj_id(+)  and env_state = 'running'  and a.print_ip = f.print_ip(+) and a.env_id="+request.getParameter("id") + " and rownum<2";
+	System.out.println("-----"+sql+"-----\n");
+	rs = db.execSQL(sql);
+	sql4 = "select * from a_proj_env_svr where env_id =" +request.getParameter("id");
+	System.out.println("-----"+sql4+"-----\n");
+	rs4 = db.execSQL(sql4);
+%>
+
+<%while(rs.next()){%>
+<html>
+<head>
+	<title><%=rs.getString("ENV_NAME")%> Environment Information</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+	<link href="css/ebao_no_ts.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="includes/common.js"></script>
+</head>
+<body>
+<div align="center"><br><h3><%=rs.getString("ENV_NAME")%> Environment Information</h3></div>
+<table width="750" border="1" cellpadding="1" cellspacing="1" bordercolorlight="#9E9E9E" bordercolordark="#EFEFEF" align="center">
+	<tr>
+		<td bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Environment IP</strong></font></td>
+		<td bgcolor="#FCFCFC" class="td_content"><%=rs.getString("ENV_IP")%></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>WEB Server Path</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_content"><font color="#0000FF"><%=rs.getString("WEB_INST_PATH")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>HTML File Path</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("HTML_PATH")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>APP Server Version</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("APP_TYPE")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>APP Server Path</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("APP_INST_PATH")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>APP Server Port</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("APP_PORT")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Debug Port</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><% while(rs4.next()){
+			out.print(rs4.getString("DEBUG_port"));
+		}%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong><font color=red>Auto Deployment CMD</font></strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="purple">sh auto_deploy.sh <%=rs.getString("ENV_NAME")%> <i>&lt;PKG_NAME&gt;</i> <%=rs.getString("INC_DEPLOY_PARA")%> &lt;<i>CM_NAME</i>&gt; all </font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>App Deployment Type</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("INC_DEPLOY_PARA")%>/<%=rs.getString("FULL_DEPLOY_PARA")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>DB TNSNAME</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("DB_LDAP_NAME")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>DB Connection String</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF">
+			<%
+				sql3="select * from ts_db where ldap_name='"+rs.getString("DB_LDAP_NAME")+"'";
+				System.out.println(sql3);
+				rs3 = db.execSQL(sql3);
+				while(rs3.next()){
+					db_str="jdbc:oracle:thin:@"+rs3.getString("DB_IP")+":"+rs3.getString("DB_PORT_NUM")+":"+rs3.getString("DB_SID");
+					out.print("jdbc:oracle:thin:@"+rs3.getString("DB_IP")+":"+rs3.getString("DB_PORT_NUM")+":"+rs3.getString("DB_SID"));
+				}
+			%>
+		</font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong><red>DB Schema Size</red></strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><button id="query_btn" onclick="window.location='<%=request.getRequestURL()+"?"+request.getQueryString()%>&act=query';">Query</button><font color="red">
+			<%
+				try {
+					DBADBean db2 = new DBADBean(db_str,rs.getString("DB_USER"),rs.getString("DB_USER")+"pwd");
+					Connection conn = db2.getConnection();
+					sql2="select to_char(sum(bytes)/1024/1024/1024,'9999999999.99') sz from user_segments";
+					PreparedStatement pstmt = null;
+					pstmt = conn.prepareStatement(sql2);
+					System.out.println(sql2);
+					if ("query".equals(request.getParameter("act"))) {
+						rs2 = pstmt.executeQuery(sql2);
+						while(rs2.next()){
+							out.print(rs2.getString("sz")+"G");
+						}
+					}
+			%>
+		</font></td>
+	</tr>
+	<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong><red>Oracle Version</red></strong></font></td>
+	<td  bgcolor="#FCFCFC" class="td_title"><font color="red">
+		<%
+				rs2=pstmt.executeQuery("select * from v$version where rownum<2");
+				while(rs2.next()){
+					out.print(rs2.getString("banner")+"<br>");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		%>
+	</font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>DB Username & Password</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("DB_USER")%>/<%=rs.getString("DB_USER_PASSWD")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>SSH&FTP Login ID & Password</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("ENV_USR")%>/<%=rs.getString("ENV_PWD")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Environment Group</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("PROJ_GRP")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Environment Project</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("PROJ_NAME")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Homepage URL</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><a href="<%=rs.getString("APP_URL")%>"><%=rs.getString("APP_URL")%></a></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Creator</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("CREATER")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Created Date</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getDate("CREATE_DATE")%><%=rs.getTime("CREATE_DATE")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Applier</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("PROPOSER")%></font></td>
+	</tr>
+
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Status</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("ENV_STATE")%></font></td>
+	</tr>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Project Code</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("PROJ_ID")%></font></td>
+	</tr>
+
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>DMS & Print Type</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=Tools.msNull(rs.getString("DMS_TYPE"))%>&<%=Tools.msNull(rs.getString("PRINT_TYPE"))%></font></td>
+	</tr>
+
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Printer Server Info</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=rs.getString("PRINT_IP")%>
+			<%
+				out.print("("+rs.getString("print_user")+":"+rs.getString("print_pwd")+")");
+			%>
+
+		</font></td>
+	</tr>
+	<% System.out.println("****************************************************\n"); %>
+	<tr>
+		<td  bgcolor="#D2D2D2" class="td_title"><font color="#0000FF"><strong>Printer Server Path</strong></font></td>
+		<td  bgcolor="#FCFCFC" class="td_title"><font color="#0000FF"><%=Tools.msNull(rs.getString("PRINT_DIR"))%></font></td>
+	</tr>
+	<% System.out.println("****************************************************\n"); %>
+</table>
+<br>
+<center><button onClick="window.close();">Close</button></center>
+<%}%>
+</body>
+<%db.close();%>
+<%rs.close();%>
+<%rs4.close();%>
+</html>

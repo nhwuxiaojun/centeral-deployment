@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>Welcome</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+
+<body>
+<%
+if(session.getAttribute("username")==null||"".equals(session.getAttribute("username"))){
+	String domainUserName = request.getRemoteUser().toString();
+	int slashIndex1 = domainUserName.indexOf("\\");
+	if (domainUserName != null&&slashIndex1 != -1) {
+		domainUserName = domainUserName.substring(slashIndex1 + 1);
+	}
+	int slashIndex2 = domainUserName.indexOf("@");
+	if (domainUserName != null&&slashIndex2 != -1) {
+		domainUserName = domainUserName.substring(0,slashIndex2);
+	}
+	session.setAttribute("username",domainUserName.trim());
+}
+%>
+</body>
+</html>

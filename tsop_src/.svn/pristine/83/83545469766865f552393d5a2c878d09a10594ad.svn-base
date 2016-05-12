@@ -1,0 +1,82 @@
+body {
+	background-color:#FFFFFF;
+	margin:0;
+	padding:0;
+	border:none;
+	font: 12px/1.5 Arial;
+	text-align:center;
+}
+
+input {
+	font: 12px/1.5 Arial;
+}
+
+button {
+	font: 12px/1.5 Arial;
+}
+
+select {
+	font: 12px/1.5 Arial;
+}
+
+td {
+	font: 12px/1.5 Arial;
+}
+
+img {
+	border-width:0px;
+}
+
+a {
+	text-decoration: none;
+}
+
+fieldset {
+	box-shadow: 5px 5px 5px #BBBBBB;
+	border: solid 1px #BBBBBB;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+legend {
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.loading {
+	margin-right: 0px;
+	position:fixed;
+	background-color:yellow;
+	top:0;
+	display:none;
+}
+
+.pacrudFilter {
+	padding: 8px;
+	margin:auto;
+}
+
+.pacrudLogo {
+	margin: auto;
+	text-align:center;
+	width:100px;
+}
+
+.pacrudFormTable {
+	margin:auto;
+	border: 0px;
+	width:100%;
+}
+
+.pacrudFormLabel {
+	text-align: right;
+	border: 0px;
+	width:40%;
+}
+
+.pacrudFormFields {
+	border: 0px;
+	width:60%;
+	white-space: nowrap;
+	display: inline;
+}

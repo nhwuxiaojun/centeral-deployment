@@ -1,0 +1,563 @@
+<%@ include file="../interface/check_non_ts.jsp"%>
+<%@ page contentType="text/html; charset=gbk" language="java" import="java.sql.*" errorPage="" %>
+<%@ page import="ebao.DBean" %>
+<%@ page import="ebao.MySQLDBean" %>
+<%@ page import="ebao.Tools" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.net.*" %>
+<%@ page import="java.io.*" %>
+<%@ page import="java.text.*" %>
+<%@ page import="java.util.*" %>
+<%@page import="com.mysql.jdbc.Driver"%>
+ 
+<html>
+<head>
+<title>My Favorite Environments</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<meta http-equiv="refresh" content="300">
+<script src="../scripts/jquery-1.11.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+$(":text").focus ( function() {
+                $(this).css("background","yellow");
+        }).blur(function() {
+                $(this).css("background","#fff");
+        });
+$("#maintable tbody tr").hover(function() {
+        // $("#orderedlist li:last").hover(function() {
+                $(this).addClass("blue");
+        }, function() {
+                $(this).removeClass("blue");
+        });
+});
+
+$('#search').focus();
+//document.getElementById('search').onblur=function() {
+$('#search').blur (function() {
+	alert('test');
+//}
+});
+
+</script>
+<style>
+.blue {
+        background:#ffff00;  
+}
+body {
+        font-family:verdana, sans-serif;
+        font-size:small;
+        color:#000;
+}
+</style>
+<link href="../css/ebao_no_ts.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../includes/common.js"></script>
+</head>
+<%
+Socket s=null;
+DBean db = new DBean();
+MySQLDBean db1 = new MySQLDBean();
+String sql = new String();
+String sql1= new String();
+String sql2= new String();
+String sql3= new String();
+String sql4= new String();
+int i=0;
+int sum=0;
+float sum1=0;
+float sum2=0;
+String array1[][];
+array1=new String[50][2];
+ResultSet rs;
+ResultSet rs1;
+ResultSet rs2;
+ResultSet rs3;
+ResultSet rs4;
+%>
+<script language="JavaScript">
+var subcat = [];
+subcat.length=0;
+<% 
+sql1="select * from ts_proj where valid=1 order by proj_name";
+System.out.println(sql1);
+rs1=db.execSQL(sql1);
+int count = 0; 
+while(rs1.next()){ 
+	%> 
+		subcat[<%=count%>] = ["<%=rs1.getString("proj_grp")%>","<%=rs1.getString("proj_name")%>","<%=rs1.getString("proj_id")%>"];
+	<% 
+		count++; 
+} 
+rs1.close(); 
+	%> 
+	
+
+function change_proj(pname) 
+{
+	//var form11 = document.getElementById("form1");
+	//var act1=document.getElementById("flag");
+	//act1.value="y";
+	//form11.target="_blank";
+	//form11.action="ts_env_query.jsp?proj_name="+pname;
+	//form11.method="post";
+	form1.submit();	
+}
+function change(team_id) 
+{ 
+	document.form1.proj_name.length = 0; 
+	document.form1.proj_name.options[0] = new Option('Please select','');
+	var team_id=team_id; 
+	for (i=0;i < subcat.length ; i++) 
+	{         	
+		if (subcat[i][0] == team_id) 
+		{ 
+			document.form1.proj_name.options[document.form1.proj_name.length] = new Option(subcat[i][1], subcat[i][2]); 
+		}        
+	} 
+	// document.form1.proj_name.options[0].selected = true;  
+}   
+
+function query_proj(){
+	//alert("query by select change.");
+	var form11 = document.getElementById("form1");
+	var act1=document.getElementById("flag");
+	act1.value="y";
+	//form11.target="_blank";
+	//form11.action="ts_project_support_query.jsp";
+	form11.method="get";
+	form11.submit();
+}
+
+function search_proj() {
+        if(form1.col_value1.value.length<2){
+                alert("Please input more letters!");
+                form1.col_value1.select();
+
+        } else {
+	form1.proj_grp.selectedIndex=0;
+	form1.proj_name.selectedIndex=0;
+	form1.submit();
+	}
+}
+
+</script>
+<script language="JavaScript" for="document" event="onkeypress">
+if(event.keyCode==13){
+	check();
+}
+</script>
+<script language="JavaScript" for="window" event="onload">
+//form1.col_value1.select();
+</script>
+<body>
+<!--jsp:include page="../head.jsp" / -->
+<%@include file="head.jsp" %>
+<%
+String action=request.getParameter("act");
+System.out.println("------------"+action);
+
+if ("delete".equals(action)) {
+    //sql="delete from ts_my_favorite_env where user_name='"+session.getAttribute("username")+"' and env_id="+request.getParameter("id");
+    sql="delete from ts_my_favorite_env where user_name='"+session.getAttribute("username")+"' and env_id in (select env_id from ts_env where env_name='"+request.getParameter("env_name")+"')";
+    System.out.println(sql);
+    try {
+        i = db.execUpdate(sql);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+// For search
+String tmpact=request.getParameter("act");
+String tmpid=request.getParameter("proj_id");
+String tmpproj_name=request.getParameter("proj_name");
+String tmpproj_grp=request.getParameter("proj_grp");
+String proj_id=request.getParameter("prod_id");
+String col_name1=request.getParameter("col_name1");
+String col_value1=request.getParameter("col_value1");
+// For print
+String tmpflag=request.getParameter("flag");
+System.out.println("Flag is:"+tmpflag);
+
+System.out.println("proj_name:"+tmpproj_name);
+System.out.println("proj_grp:"+tmpproj_grp);
+//System.out.println("env_state:"+env_state);
+System.out.println("col_name1:"+col_name1);
+System.out.println("col_value1:"+col_value1);
+
+int flag = 0;
+
+//query by procode
+String proj_code_sql="";
+//String proj_name=(String)request.getParameter("proj_name");
+//if (proj_name != null&& !"".equals(proj_name)) {
+//	proj_code_sql=" and  proj_code= " + proj_name.trim() + "  ";
+//}
+
+%>
+
+<center>
+<table align="center" cellpadding="0" cellspacing="0" border="0" width="98%">
+<tr><td>&nbsp;</td></tr>
+<form id="form1" name="form1" action="ts_env_query.jsp" method="get" class="en">
+<input name="flag" value="y" type=hidden>
+<tr>
+<td align="left" class="en" width="20%">
+        &nbsp;<strong><font color="#3333cc" class="MenuBarItemSubmenu">Environment Query</font></strong> &nbsp;&nbsp;
+
+<SELECT disabled="disabled" name="proj_grp" onChange="change(document.form1.proj_grp.options[document.form1.proj_grp.selectedIndex].value)" > 
+  	 <option 
+     <%
+	if ("".equals(request.getParameter("proj_grp"))) {
+		out.print("selected=selected ");
+		}
+	 %>
+     value="%">Project Group</option>
+	 <%
+	 sql3="select distinct proj_grp from ts_proj where valid=1";
+	 System.out.println(sql3);
+	 rs3=db.execSQL(sql3);
+	   while(rs3.next()){%>
+	<option <%
+	if (rs3.getString("proj_grp").equals(request.getParameter("proj_grp"))) {
+		out.print("selected=selected ");
+		}
+	%>
+    value="<%=rs3.getString("proj_grp")%>"><%=rs3.getString("proj_grp")%></option>
+	<%}%>
+	</select>
+				&nbsp;
+	<select name="proj_name" onChange="change_proj(document.form1.proj_name.options[document.form1.proj_name.selectedIndex].value)">
+		<option 
+     	<%
+	if ("".equals(request.getParameter("proj_name"))) {
+		out.print("selected=selected ");
+		}
+	 %>
+                value="">Project Name</option>
+				<%
+				sql1="select * from ts_proj where valid=1 order by proj_name ";
+				System.out.println(sql1);
+				rs3 = db.execSQL(sql1);
+				while(rs3.next()){
+					%>
+						<option 
+<%
+	if (rs3.getString("proj_id").equals(request.getParameter("proj_name"))) {
+		out.print("selected=selected ");
+		}
+	%>
+        value="<%=rs3.getString("proj_id")%>"  ><%=rs3.getString("proj_name")%></option>
+	<%}%>
+	</select> 
+				&nbsp;
+         <select name="col_name1" id="col_name1">
+              <option value="env_ip" <%if("env_ip".equals(request.getParameter("col_name1"))) { out.print("selected");}%>>Internal Env IP</option>
+              <option value="env_name" <%if("env_name".equals(request.getParameter("col_name1"))) { out.print("selected");}%>>Environment Name</option>
+              <option value="ext_env_ip" <%if("ext_env_ip".equals(request.getParameter("col_name1"))) { out.print("selected");}%>>External Env IP</option>
+              <option value="app_version" <%if("app_version".equals(request.getParameter("col_name1"))) { out.print("selected");}%>>Current Version</option>
+         </select>
+            <%
+// Start Search by project_name, group, code, etc.                
+           if("".equals(request.getParameter("col_value1"))||request.getParameter("col_value1")==null){%>
+	<input type="text" id="search" name="col_value1"
+		   onblur="var re=/[a-z]|[A-Z]/g; re.exec($('#search').val()); if ( re.lastIndex > 0) { $('#col_name1').find('option').eq(1).attr('selected',true); } "
+		   value="" size="30" placeholder="Environment IP or Name">&nbsp;
+	<%}else{%>
+                <input type="text" id="search" name="col_value1" value="<%=request.getParameter("col_value1")%>" class="en" size="30" >&nbsp;
+            <%}
+// End Search by project_name, group, code, etc.   
+			%>
+            
+<input type="button" name="button1" value="Query" onClick="search_proj()">
+<input type="button" name="button2" value="Back" onClick="history.go(-1);">
+<%
+String common_sql = new String();
+//common_sql="select a.ENV_IP,a.APP_INST_PATH,a.ENV_ID,d.env_name,a.app_url,A.app_version,a.ENV_USR,a.ENV_PWD,a.APP_PORT,b.LDAP_NAME,c.DB_USER,c.DB_USER_PASSWD,f.account from ts_env_app a, ts_db b, ts_env_db c, ts_env d, ts_proj e, ts_member f  where c.db_ldap_name=b.LDAP_NAME(+) and a.env_id=c.env_id(+) and a.env_id=d.env_id(+) and d.proj_id=e.proj_id(+) and lower(c.DB_USER_TYPE)='owner' and e.owner1=f.no(+)";
+//common_sql="select a.ENV_IP,a.APP_INST_PATH,a.ENV_ID,d.env_name,a.app_url,A.app_version,a.ENV_USR,a.ENV_PWD,a.APP_PORT,b.LDAP_NAME,c.DB_USER,c.DB_USER_PASSWD,f.account from ts_env_app a, ts_db b, ts_env_db c, ts_env d, ts_proj e, ts_member f, ts_my_favorite_env g  where c.db_ldap_name=b.LDAP_NAME(+) and a.env_id=c.env_id(+) and a.env_id=d.env_id(+) and d.proj_id=e.proj_id(+) and lower(c.DB_USER_TYPE)='owner' and e.owner1=f.no(+)";
+common_sql="select a.ENV_IP,c.db_id,a.APP_INST_PATH,a.ENV_ID,d.env_name,a.app_url,A.app_version,a.ENV_USR,a.ENV_PWD,a.APP_PORT,b.LDAP_NAME,c.DB_USER,c.DB_USER_PASSWD,f.account  from ts_env_app         a,       ts_db              b,       ts_env_db          c,       ts_env             d,       ts_proj            e,       ts_member          f,       ts_my_favorite_env g where c.db_ldap_name = b.LDAP_NAME(+)   and d.env_id = c.db_id(+)   and a.env_id(+) = d.env_id   and d.proj_id = e.proj_id(+)   and e.owner1 = f.no(+)   and g.env_id = d.env_id(+)";
+
+if ("".equals(col_value1)||(col_value1==null)){
+	if (tmpproj_name==null||"".equals(tmpproj_name)) {
+		// default access
+	//	sql=common_sql+" and rownum<10 order by a.create_date desc";
+	//      sql="select * from ("+common_sql+" order by a.create_date desc ) where  rownum<10";
+	        sql="select * from ("+common_sql+" and g.env_id=d.env_id and g.user_name='"+session.getAttribute("username")+"'order by d.env_name ) where  rownum<20";
+		System.out.println("---sql1---");
+	} else {
+		// search by project name
+		sql=common_sql+" and d.proj_id like '"+tmpproj_name+"' order by ENV_NAME";
+		System.out.println("---sql2---");
+	}
+} else {
+		// search by input
+	System.out.println(col_value1.indexOf("%"));
+	System.out.println(col_value1.length());
+	if (col_value1.indexOf("%")>=0||col_value1.trim()==""||col_value1.trim().indexOf(" ")>=0||col_value1.length()<2) {
+	//if (1==2) {
+             sql=common_sql+" and rownum<10 order by ENV_NAME";
+		System.out.println("---sql3---");
+		out.print("<font color=red>Please input more letters.</font>");
+	} else {
+		if ("ext_env_ip".equals(col_name1)) {
+			sql4="select * from ts_ip_map_matrix where external_ip like '%"+col_value1.toString().trim()+"%'";
+			//System.out.println("external_ip query: "+sql4);
+			rs4=db1.execSQL(sql4);
+			sql=common_sql+" and env_ip in (";
+			while (rs4.next()) {
+					sql=sql+"'"+rs4.getString("INTERNAL_IP")+"',";
+			}
+			sql=sql+"'')";
+		} else {
+			sql=common_sql+" and upper("+ col_name1.toString()+") like '%"+ col_value1.toString().trim().toUpperCase() + "%' order by env_name";
+		}
+		System.out.println("query sql:"+sql);
+		out.print("Search Condition: <font color=red><b>"+col_name1.toString()+"="+col_value1.toString().trim()+"</b><font>");
+	}
+}
+System.out.println(sql);
+rs = db.execSQL(sql);
+
+%>
+
+
+
+</td>
+</tr>
+</form>
+
+<%sql="select * from a_user where usr='"+session.getAttribute("username")+"'";%>
+<%rs2=db.execSQL(sql);%>
+<%while(rs2.next()){%>
+	<%if("0".equals(rs2.getString("valid"))){%>
+		<tr><td>&nbsp;</td></tr>
+			<tr>
+			<td align="center">
+			<form name="form3" action="ts_env_query.jsp">
+			Project Group：<select name="a_proj_grp">
+			<%
+			sql="select distinct proj_grp from ts_proj order by proj_grp";
+		rs3=db.execSQL(sql);
+		while (rs3.next()) {
+			out.print("<option value="+rs3.getString("PROJ_GRP")+">"+rs3.getString("PROJ_GRP")+"</option>");
+		}
+		
+		%></select>
+        Project Name：<input name="a_proj_name" size=15>
+        Project Code：<input name="a_proj_id" size=10>
+		OWNER1:<select name="a_owner1">
+        <%
+		for (int j=0;j<i;j++) {
+			out.print("<option value="+array1[j][0]+">"+array1[j][1]+"</option>");
+		}		
+		%>
+        </select> 
+        <input type="submit" name="button2" value="Add" class="en">
+        </form>
+        </td>
+      </tr>
+<%}}%>
+</table>
+<input type="hidden" name="flag" value="y">
+</form>
+    <form name="form2">
+		<input name="act" type=hidden>
+		<input name="proj_id" type=hidden>
+		<input name="s_owner1" type=hidden>
+		<input name="s_owner2" type=hidden>
+		<input name="cost1" type=hidden>
+		<input name="cost2" type=hidden>
+<br>
+<table id="maintable" width="98%" border="1" cellpadding="1" cellspacing="1" bordercolorlight="#9E9E9E" bordercolordark="#EFEFEF" align="center">
+<thead>
+	<tr bgcolor="#3333cc" height="24">
+	  <td align="center" class="en" width="2%"></td>
+	  <td align="center" class="en" width="2%"><font color="#ffffff"><b>No</b></font></td>
+	  <td align="left" class="en" width="7%"><font color="#ffffff"><b>Env IP</b></font></td>
+	  <td align="left" class="en" width="10%"><font color="#ffffff"><b>Env Information</b></font></td>
+	  <td align="center" class="en" width="4%"><font color="#ffffff"><b>URL</b></font></td>
+	  <td align="center" class="en" width="22%"><font color="#ffffff"><b>Current Version</b></font></td>
+	  <td align="center" class="en" width="7%"><font color="#ffffff"><b>Deploy</b></font></td>
+	  <td align="center" class="en" width="10%"><font color="#ffffff"><b>App Access</b></font></td>
+	  <td align="center" class="en" width="10%"><font color="#ffffff"><b>App Restart</b><font color="red"></font></font></td>
+	  <td align="center" class="en" width="6%"><font color="#ffffff"><b>App Status</b></font></td>
+	  <td align="center" class="en" width="11%"><font color="#ffffff"><b>DB Access</b></font></td>
+	  <td align="center" class="en" width="5%"><font color="#ffffff"><b>TS Support</b></font></td>
+	</tr>
+</thead>
+<tbody>
+	<%while(rs.next()){
+				sum++;
+		if ((sum%2)==1) {
+			out.println("<tr bgcolor=#eeeeee height=20>");
+		} else {
+			out.println("<tr bgcolor=#ffffff height=20>");
+		}
+		%>
+	  <td align="center" class="en" width="2%"><a href="#" onclick="if (confirm('Confirm remove env <%=rs.getString("ENV_NAME")%> from favorites?')) { window.location='my_favorite_env.jsp?act=delete&env_name=<%=rs.getString("ENV_NAME")%>'; }"><img src="../images/remove1.png" border=0 alt="Remove from my favorites"></a></td>
+	  <td align="center" class="en" width="3%"><%=sum%></font></td>
+	  <td align="left" class="en"><%=rs.getString("ENV_IP")%></font></td>
+	  <td align="left" class="en"><a href="#"  onClick="open_win('<% if ( "null".equals(rs.getString("ENV_ID"))||rs.getString("ENV_ID")==null) { out.print("db_info_detail.jsp"); } else { out.print("env_info_detail.jsp"); } %>?id=<%=rs.getInt("ENV_ID")%>&env_name=<%=rs.getString("ENV_NAME")%>',850,640);"><%=rs.getString("ENV_NAME")%></a></font></td>
+	<td align="center">
+<% 
+sql4="select * from ts_ip_map_matrix where internal_ip='"+rs.getString("ENV_IP")+"'";
+//System.out.println("sql4--"+sql4);
+rs4=db1.execSQL(sql4);
+int sum4=0;
+String int_url=rs.getString("APP_URL");
+String ext_url=new String();
+while(rs4.next()){
+	sum4++;
+//	ext_url=int_url.replace(rs4.getString("INTERNAL_IP"),rs4.getString("EXTERNAL_IP")+":"+rs4.getString("EXTERNAL_PORT"));
+//	if (int_url.indexOf(":")==-1) {
+	if ("80".equals(rs4.getString("INTERNAL_PORT"))) {
+			ext_url=int_url.replace(rs4.getString("INTERNAL_IP").trim(),rs4.getString("EXTERNAL_IP")+":"+rs4.getString("EXTERNAL_PORT"));			
+		} else {
+			ext_url=int_url.replace(rs4.getString("INTERNAL_IP")+":"+rs4.getString("INTERNAL_PORT"),rs4.getString("EXTERNAL_IP")+":"+rs4.getString("EXTERNAL_PORT"));
+		}
+	System.out.println(ext_url);
+	System.out.println(int_url);
+	out.println("<a href="+int_url+" target=_blank>"+rs4.getString("INTERNAL_IP")+":"+rs4.getString("INTERNAL_PORT")+"</a>");
+	out.println("<a href="+ext_url+" target=_blank>"+rs4.getString("EXTERNAL_IP")+":"+rs4.getString("EXTERNAL_PORT")+"</a>");
+}
+if (sum4==0) {
+	out.println("<a href="+int_url+" target=_blank>Access</a>");
+}
+
+%> 
+	</td>
+	<td align="left" class="en">
+	[<a href="#" onClick="open_win('../ts_deploy_history.jsp?env_id=<%=rs.getInt("ENV_ID")%>&env_name=<%=rs.getString("ENV_NAME")%>',1000,600)">History</a>]  
+	<a href="/tsop/realtime_show_log.jsp?env_id=<%=rs.getInt("ENV_ID")%>&env_name=<%=rs.getString("ENV_NAME")%>&filename=<%=rs.getString("APP_VERSION")%>" target="_blank"><%=rs.getString("APP_VERSION")%></a>
+	</td>
+<td align="center" class="en" >
+<%
+//System.out.println(rs.getString("ENV_ID"));
+//System.out.println(rs.getInt("ENV_ID"));
+//System.out.println(rs.getString("DB_ID"));
+String tid=rs.getString("ENV_ID");
+if ( "null".equals(rs.getString("ENV_ID"))||rs.getString("ENV_ID")==null) { tid=rs.getString("DB_ID"); }
+
+System.out.println("tid is:"+tid);
+//sql4="select * from ts_deploy_log where end_time is null and env_id='"+rs.getString("ENV_ID")+"' and version='"+rs.getString("APP_VERSION")+"'";
+//sql4="select * from (select * from ts_deploy_log where end_time is null and env_id='"+rs.getString("ENV_ID")+"' and version='"+rs.getString("APP_VERSION")+"') where rownum<2";
+sql4="select * from (select * from ts_deploy_log where end_time is null and env_id='"+tid+"' and version='"+rs.getString("APP_VERSION")+"') where rownum<2";
+//System.out.println("sql4---"+sql4);
+sum4=0;
+try {
+rs4=db.execSQL(sql4);
+while(rs4.next()){
+	sum4++;
+}
+if (sum4==1) {
+        out.println("<img src='../images/deploying.gif' width=23 height=25 >");
+} else {
+ if ( "null".equals(rs.getString("ENV_ID"))||rs.getString("ENV_ID")==null)  { 
+%>
+<a href="#"  onClick="open_win('../ts_db_deploy_env.jsp?env_id=<%=rs.getInt("DB_ID")%>&env_name=<%=rs.getString("ENV_NAME")%>',800,550);"><font color=red><b>Deploy</b></font></a>
+<%
+  } else {
+%>
+<a href="#"  onClick="open_win('../ts_deploy_env.jsp?env_id=<%=rs.getInt("ENV_ID")%>&env_name=<%=rs.getString("ENV_NAME")%>',800,550);"><font color=red><b>Deploy</b></font></a>
+<%
+  }	//end of if-else
+}
+} catch (Exception e) {
+	e.printStackTrace();
+}
+%> 
+<a href="javascript:" onClick="execSamba('\\\\172.17.1.7\\Application\\deploy\\<%=rs.getString("ENV_NAME")%>')">Log</a></td>
+
+	<td align="center" class="en">
+	<a href="javascript:" onClick="execPutty('<%=rs.getString("ENV_IP")%>','<%=rs.getString("ENV_USR")%>','<%=rs.getString("ENV_PWD")%>')">SSH</a>&nbsp;|
+	<a href="javascript:" onClick="execFileZilla('<%=rs.getString("ENV_IP")%>','<%=rs.getString("ENV_USR")%>','<%=rs.getString("ENV_PWD")%>','<%=rs.getString("APP_INST_PATH")%>','sftp')">FTP</a>&nbsp;|	
+  	<a href="javascript:" onClick="execSamba('\\\\<%=rs.getString("ENV_IP")%>')">Samba</a>
+	</td>
+<td align="center" class="en" width="6%">
+<a href="javascript:" onClick="restart_app('<%=rs.getString("ENV_IP")%>','<%=rs.getString("ENV_USR")%>','<%=rs.getString("ENV_PWD")%>')">App</a>&nbsp;|
+<a href="javascript:" onClick="restart_batch('<%=rs.getString("ENV_IP")%>','<%=rs.getString("ENV_USR")%>','<%=rs.getString("ENV_PWD")%>')">Batch</a>
+</td>
+	<td align="center">
+      <%
+           try{
+		//System.out.print("Trying SSH to "+rs.getString("ENV_IP")+"...");
+// With performance issue need to optimization.
+		//s=new Socket(InetAddress.getByName(rs.getString("ENV_IP")),22);
+		InetAddress theAddress = InetAddress.getByName(rs.getString("ENV_IP")); 
+		InetSocketAddress inetSocketAddress = new InetSocketAddress(theAddress, 22); 
+		s=new Socket();
+		s.connect(inetSocketAddress, 1000);
+                out.print("<font color=green>22</font>");
+				 //System.out.println(" Alive!\n");
+           }
+           catch(IOException e){	
+                 out.print("<font color=red>22</font>");
+	//			 System.out.println("Host "+rs.getString("ENV_IP")+" unreachable.\n");
+           }finally{
+                try{s.close();}catch(Exception e){}
+           }
+	  %>
+      <%
+           try{
+		//System.out.print("Trying make HTTP Connection to "+rs.getString("ENV_IP")+"...");
+// With performance issue need to optimization.
+		//s=new Socket(InetAddress.getByName(rs.getString("ENV_IP")),80);
+		InetAddress theAddress = InetAddress.getByName(rs.getString("ENV_IP")); 
+		InetSocketAddress inetSocketAddress = new InetSocketAddress(theAddress, 80); 
+		s=new Socket();
+		s.connect(inetSocketAddress, 1000);
+                out.print("<font color=green>80</font>");
+				 //System.out.println(" Alive!\n");
+           }
+           catch(IOException e){	
+                 out.print("<font color=red>80</font>");
+	//			 System.out.println("Host "+rs.getString("ENV_IP")+" unreachable.\n");
+           }finally{
+                try{s.close();}catch(Exception e){}
+           }
+	  %>
+      <%
+           try{
+		//System.out.print("Trying to make TCP Connection to APP"+rs.getString("ENV_IP")+"...");
+// With performance issue need to optimization.
+		//s=new Socket(InetAddress.getByName(rs.getString("ENV_IP")),22);
+
+		InetAddress theAddress = InetAddress.getByName(rs.getString("ENV_IP")); 
+		InetSocketAddress inetSocketAddress = new InetSocketAddress(theAddress, rs.getInt("APP_PORT")); 
+		s=new Socket();
+		s.connect(inetSocketAddress, 1000);
+
+                out.print("<font color=green>"+rs.getString("APP_PORT")+"</font>");
+				 //System.out.println(" Alive!\n");
+           }
+           catch(IOException e){	
+                 out.print("<font color=red>"+rs.getString("APP_PORT")+"</font>");
+//		 System.out.println("Host "+rs.getString("ENV_IP")+" unreachable.\n");
+           }finally{
+                try{s.close();}catch(Exception e){}
+           }
+	  %>
+      </td>
+	  <td align="center" class="en"><a href="javascript:" onClick="execPLSQL('<%=rs.getString("LDAP_NAME")%>','<%=rs.getString("DB_USER")%>','<%=rs.getString("DB_USER_PASSWD")%>')">owner</font></a> 
+|&nbsp;<a href="javascript:" onClick="execPLSQL('<%=rs.getString("LDAP_NAME")%>','<%=rs.getString("DB_USER")+"_read"%>','<%=rs.getString("DB_USER")+"_read_only"%>')">read</font></a>
+|&nbsp;<a href="#" onclick="open_win('../extract_awr.jsp?env_name=<%=rs.getString("ENV_NAME")%>&db_sid=<%=rs.getString("LDAP_NAME")%>&db_ldap_name=<%=rs.getString("LDAP_NAME")%>',420,460);"><font color=blue>AWR</font></a>
+</td>
+	  <td align="center" class="en" width="10%"><a href="mailto:<%=rs.getString("account")%>@ebaotech.com"><%=rs.getString("account")%></a></td>
+    </tr>
+	<%}%>
+</tbody>
+</table>
+</center>
+</form>
+<%db.close();%>
+<%rs.close();%>
+<%rs1.close();%>
+<%rs2.close();%>
+<%rs3.close();%>
+<br>
+<small>
+&nbsp;&nbsp;Notice: If you want to use SSH, you need to download and install Putty from <a href="http://ts.ebaotech.com/tsop/software/putty-2014-04-02-installer.exe">here</a>.
+&nbsp;&nbsp;And IE is strongly recommended for browsing this site.</a>.
+</small>
+<jsp:include page="copyright.jsp" />
+</body>
+</html>

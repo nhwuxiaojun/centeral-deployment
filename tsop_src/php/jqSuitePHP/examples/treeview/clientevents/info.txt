@@ -1,0 +1,2 @@
+
+You can hook client-side events that fire for various treeview events, such as selection, node checking, etc. This is achieved through the collection of the JQTreeView class. Each event is a string pointing to a javascript function that will execute when the event is fired. Each function typically receives two parameters - the node causing the event and the event argument of the browser (client-side event). Some events like Check, Select, etc can be cancelled by returning false from the event handler. Please, refer to the PHP tab for additional details. 

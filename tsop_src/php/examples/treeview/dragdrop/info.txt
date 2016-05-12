@@ -1,0 +1,1 @@
+Adding nodes to a treeview instance is easy - just create a new JQTreeNode instance for each new, set its Text property and add it to the Nodes collection of the treeview instance. You can add unlimited levels of nested nodes at once - each node has its own Nodes collection of child nodes.

@@ -1,0 +1,513 @@
+================================
+Get jqTreeView clienti-side object instance
+=================================
+
+example:
+	var tree = $("#TreeViewID").getTreeViewInstance();
+	
+	where "TreeViewID" is the ID of the treeview control (typically set on its parent <ul> tag). Note that for ASP.NET WebForms the server-side ID is no always equal to the client-side ID, so you need to use:
+	
+	var tree = $("#<$= TreeViewID.ClientID %>").getTreeViewInstance();
+
+========
+Properties
+========
+
+	Properties can be set while initializing the treeview instance and are read-only from this point thereafter and cannot be changed. If you want to interact with the treeview at the client-side at runtime, you can use Events and Methods.
+
+	checkBoxes - [boolean] - default: false - Specifies if checkBoxes should be displayed for tree nodes
+	dataUrl - [string] - default: "" - The URL used by jqTreeView to retreive its nodes via AJAX
+	dragAndDropUrl - [string] - default: "" - The URL used by jqTreeView to post node drag and drop data to the server
+	height - [int] - default: 500 - The height of the treeview
+	hoverOnMouseOver - [boolean] - default: true - Specifies if the nodes should be hovered with hover style on mouse over
+	id - [string] - default: "" - The ID of the jqTreeView root HTML element (typically the id set on the root <ul> tag of the treeview)
+	nodes - [array] - default: [] - The immediate child nodes of the tree (root nodes). 
+	multipleSelect - [boolean] - default: [] - Specifies if the treeview supports mutllpe node selection (via mouse ctrl+click)
+	nodeTemplateID - [string] - default: "" - Specifies the ID of the template that should be used for the node
+	
+	Sample setup of treeview properties:
+	
+	<script type="text/javascript">
+	
+	var treeNodes = [
+				{text:"One"},
+				{text:"Two", expanded: true, nodes: 
+					[
+						{text:"2.1"},
+						{text:"2.2",expanded:true, nodes:
+							[
+								{"text":"2.2.1", "value":"London"},
+								{"text":"2.2.2"},
+								{"text":"2.2.3"}
+							]
+						}
+					]
+				},
+				{text:"Three"}
+			];
+	
+	$('#treeViewID').jqTreeView(
+		{
+			id: 'treeViewID',
+			dataUrl: '/examples/tree/clientevents/default.aspx',
+			checkBoxes:true,	
+			nodes: treeNodes,
+			onExpand: handleExpand,
+			onSelect: handleSelect
+		});
+		
+	function handleExpand(node, event) {
+		// custom code to handle expand event
+	}
+	
+	function handleSelect(node, event) {
+		// custom code to handle select event
+	}
+	
+	</script>
+	
+	
+	It is highly recommended to initialize the treeview control in the document.ready event (after the page loading has completed), e.g.	
+	
+	$(document).ready(function() { $('#treeViewID').jqTreeView( ... ); });	
+			
+======	
+Events
+======
+
+	Events are essentially javascript funtions that execute when a certain event in the treeview fires, e.g. when a node is selected, checked, expanded, etc. All events receive two parameters - arguments and event. The arguments can be the node that is relevant to the event (e.g. the selected node in onSelect) or [object] with several properties, where several arguments are needed, for example for the drag and drop events. In addition to that, some events can be cancelled by returning false from the event handler.
+
+	
+	onExpand: [function] - default: null - specifies the function to execute upon expanding a node that has child nodes. Can be cancelled by returning false from the event handler.
+		parameters:
+			node - this instance of the node
+			event - the browser event
+			
+		example:
+		
+			$('#treeViewID').jqTreeView(
+				{
+					...
+					id: 'treeViewID',					
+					onExpand: handleExpand,
+					...
+					
+				});
+			
+			function handleExpand(node, event) {
+				// handle event here. use the getNodeOptions method to get all node options like text, value, etc.				
+			}	
+	
+	onCollapse: [function] - default: null - specifies the function to execute upon collapsing an already expanded node. Can be cancelled by returning false from the event handler.
+		parameters:
+			node - the instance of the node
+			event - the browser event
+			
+		example:
+			
+			$('#treeViewID').jqTreeView(
+				{
+					...
+					id: 'treeViewID',					
+					onCollapse: handleCollapse,
+					...
+					
+				});
+			
+			function handleCollapse(node, event) {
+				// handle event here. use the getNodeOptions method to get all node options like text, value, etc.				
+			}
+	
+	onCheck: [function] - default: null - specifies the function to execute upon checking a node. Can be cancelled by returning false from the event handler.
+		parameters:
+			node - the instance of the node
+			event - the browser event
+			
+		example:
+			
+			$('#treeViewID').jqTreeView(
+				{
+					...
+					id: 'treeViewID',					
+					onCheck: handleCheck,
+					...
+					
+				});
+			
+			function handleCheck(node, event) {
+				// handle event here. use the getNodeOptions method to get all node options like text, value, checked, selected etc.				
+			}
+		
+	onSelect: [function] - default: null - specifies the function to execute upon selecting node. Can be cancelled by returning false from the event handler.
+		parameters:
+			node - the instance of the node
+			event - the browser event
+			
+		example:
+			
+			$('#treeViewID').jqTreeView(
+				{
+					...
+					id: 'treeViewID',					
+					onSelect: handleSelect,
+					...
+					
+				});
+			
+			function handleSelect(node, event) {
+				// handle event here. use the getNodeOptions method to get all node options like text, value, checked, selected etc.				
+			}
+	
+	
+	onMouseOver: [function] - default: null - specifies the function to execute upon node mouseover.
+	
+		parameters:
+			node - the instance of the node
+			event - the browser event
+			
+		example:
+			
+			$('#treeViewID').jqTreeView(
+				{
+					...
+					id: 'treeViewID',					
+					onMouseOver: handleMouseOver,
+					...
+					
+				});
+			
+			function handleMouseOver(node, event) {
+				// handle event here. use the getNodeOptions method to get all node options like text, value, checked, selected etc.				
+			}
+	
+	
+	onMouseOut: [function] - default: null - specifies the function to execute upon node mouseout.
+	
+		parameters:
+			node - the instance of the node
+			event - the browser event
+			
+		example:
+			
+			$('#treeViewID').jqTreeView(
+				{
+					...
+					id: 'treeViewID',					
+					onMouseOut: handleMouseOut,
+					...
+					
+				});
+			
+			function handleMouseOut(node, event) {
+				// handle event here. use the getNodeOptions method to get all node options like text, value, checked, selected etc.				
+			}
+			
+			
+	onKeyDown: [function] - default: null - specifies the function to execute upon pressing a keyboard key when the treeview is focused. Can be cancelled by returning false from the event handler.
+	
+		parameters:
+			treeView - the instance of the treeview trigering the event
+			event - the browser event. You can check the key pressed using event.keyCode.
+			
+		example:
+			
+			$('#treeViewID').jqTreeView(
+				{
+					...
+					id: 'treeViewID',					
+					onKeyDown: handleKeyDown,
+					...
+					
+				});
+			
+			function handleKeyDown(treeView, event) {
+				// you can get the code of the key pressed using event.keyCode
+			}
+			
+			
+	onNodesDragged: [function] - default: null - specifies the function to execute upon dragging tree nodes (start of drag-and-drop action).
+	
+		parameters:
+			args - [object] - various arguments related to the drag & drop event
+				args.draggedNodes - [array], list of nodes being currently dragged
+				args.sourceTreeView - [object] an instance to the client-side object of the parent treeview
+			event - the browser event
+			
+		example:
+			
+			$('#treeViewID').jqTreeView(
+				{
+					...
+					id: 'treeViewID',					
+					onNodesDragged: handleNodesDragged,
+					...
+					
+				});
+			
+			function handleNodesDragged(args, event) {
+				// handle drag & drop client-side event here
+			}
+	
+	onNodesMoved: [function] - default: null  - specifies the function to execute upon moving dragged nodes with the mouse. Fires multiple times for each move movement while holding the mouse left button upon draggin nodes.
+	
+		parameters:
+			args - [object] - various arguments related to the drag & drop event
+				args.movedNodes - [array], list of nodes being currently dragged / moved
+				args.sourceTreeView - [object] an instance to the client-side object of the parent treeview
+			event - the browser event
+			
+		example:
+			
+			$('#treeViewID').jqTreeView(
+				{
+					...
+					id: 'treeViewID',					
+					onNodesMoved: handleNodesMoved,
+					...
+					
+				});
+			
+			function handleNodesMoved(args, event) {
+				// handle drag & drop move client-side event here
+			}
+	
+	
+	onNodesDropped: [function] - default: null - specifies the function to execute upon dropping dragged nodes. Can be cancelled by returning false from the event handler.
+	
+		parameters:
+			args - [object] - various arguments related to the drag & drop event
+				args.draggedNodes - [array], list of nodes being currently dragged / moved
+				args.sourceTreeView - [object] an instance to the client-side object of the source treeview
+				args.destinationNode - [object] the reference to the destination node. jQuery object (root <li> tag of node). You can get node options using the getNodeOptions method of the destination treeview instance. null if the nodes are not dropped on a jqTreeView node.
+				args.destinationTreeView - [object] - the reference to the destination treeview				
+			event - the browser event.
+			
+		example:
+			
+			$('#treeViewID').jqTreeView(
+				{
+					...
+					id: 'treeViewID',					
+					onNodesDropped: handleNodesDropped,
+					...
+					
+				});
+			
+			function handleNodesDropped(args, event) {
+				// handle drag & drop client-side event here
+			}
+			
+=========
+Methods
+=========
+
+	getNodeByText(nodeText) - find the first instance of a node with text that equals to the nodeText parameter. 
+		
+		paremeters:
+			nodeText - [string] - the text of the node to search for
+	
+		returns:
+			the instance of the matched node - a jQuery selector of the root node tag (<li>) or null if there is no node with the specified text.
+	
+		example:
+				var tree = $("#TreeViewID").getTreeViewInstance();
+				var node = tree.getNodeByText("New York");
+				var nodeOptions = tree.getNodeOptions(node);
+				alert(nodeOptions.value);
+	
+	getNodeByValue(nodeValue) - find the first instance of a node with value that equals to the nodeValue parameter. 
+	
+		parameters:
+			nodeValue - [string] - the value of the node to search for
+		returns:
+			the instance of the matched node - a jQuery selector of the root node tag (<li>) or null if there is no node with the specified text.
+	
+		example:
+				var tree = $("#TreeViewID").getTreeViewInstance();
+				var node = tree.getNodeByValue("1");
+				var nodeOptions = tree.getNodeOptions(node);
+				alert(nodeOptions.text);
+				
+	getNodeOptions(node) - find the options for the particular node 
+	
+		parameters:
+			node - [jQuery selector] - the node instance 
+		returns:
+			[object] - options related to the node. e.g. text, value, expanded, selected, etc. For a full list of options for a tree node, please check the Node Options section of our jqTreeView documentation.
+	
+		example:
+				var tree = $("#TreeViewID").getTreeViewInstance();
+				var node = tree.getNodeByValue("1");
+				var nodeOptions = tree.getNodeOptions(node);
+				alert(nodeOptions.text);
+				
+	getAllNodes() - find all nodes in a jqTreeView instance.
+	
+		returns:
+			the instance of the matched nodes - a jQuery selector of the root node tags (<li>).
+	
+		example:
+				var tree = $("#TreeViewID").getTreeViewInstance();
+				var nodes = tree.getAllNodes();
+				for (var i=0; i < nodes.length; i++) {
+					var nodeOptions = tree.getNodeOptions( nodes[i] );
+					alert(nodeOptions.text);
+				}
+	
+	getCheckedNodes() - find all checked nodes in a jqTreeView instance.
+	
+		returns:
+			the instance of the matched nodes - a jQuery selector of the root node tags (<li>).
+	
+		example:
+				var tree = $("#TreeViewID").getTreeViewInstance();
+				var nodes = tree.getCheckedNodes();
+				for (var i=0; i < nodes.length; i++) {
+					var nodeOptions = tree.getNodeOptions( nodes[i] );
+					alert(nodeOptions.text);
+				}
+				
+	getSelectedNodes() - find all selected nodes in a jqTreeView instance.
+	
+		returns:
+			the instance of the matched nodes - a jQuery selector of the root node tags (<li>).
+	
+		example:
+				var tree = $("#TreeViewID").getTreeViewInstance();
+				var nodes = tree.getSelectedNodes();
+				for (var i=0; i < nodes.length; i++) {
+					var nodeOptions = tree.getNodeOptions( nodes[i] );
+					alert(nodeOptions.text);
+				}
+				
+	getExpandedNodes() - find all expanded nodes in a jqTreeView instance.
+	
+		returns:
+			the instance of the matched nodes - a jQuery selector of the root node tags (<li>).
+	
+		example:
+				var tree = $("#TreeViewID").getTreeViewInstance();
+				var nodes = tree.getSelectedNodes();
+				for (var i=0; i < nodes.length; i++) {
+					var nodeOptions = tree.getNodeOptions( nodes[i] );
+					alert(nodeOptions.text);
+				}
+
+	check(node) - checks a node (set the checkbox of the node to checked state)
+	
+		parameters:
+			node - [jQuery selector] - the instance of the node to check.
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			var node = tree.getNodeByText("Two");
+			if (node)  {
+				tree.check(node);
+			}
+	
+	unCheck(node) - unchecks a node (set the checkbox of the node to unchecked state)
+	
+		parameters:
+			node - [jQuery selector] - the instance of the node to ubcheck.
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			var node = tree.getNodeByText("Two");
+			if (node)  {
+				tree.unCheck(node);
+			}
+			
+	checkAllNodes() - checks all nodes in a treeview instance.	
+		
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			tree.checkAllNodes();
+			
+	unCheckAllNodes() - unChecks all nodes in a treeview instance.	
+		
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			tree.unCheckAllNodes();
+			
+	expand(node) - expands a node if it has child nodes, or triggers the load on demand AJAX call to the server for load-on-demand treeview.
+	
+		parameters:
+			node - [jQuery selector] - the instance of the node to expand.
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			var node = tree.getNodeByText("Two");
+			tree.expand(node);
+			
+	collapse(node) - collapses a node an already expanded node.
+	
+		parameters:
+			node - [jQuery selector] - the instance of the node to collapse;
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			var node = tree.getNodeByText("Two");
+			tree.collapse(node);
+			
+	toggle(node) - toggles the expad/collapse state of a node.
+	
+		parameters:
+			node - [jQuery selector] - the instance of the node to collapse;
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			var node = tree.getNodeByText("Two");
+			tree.toggle(node);
+			
+	expandAll() - expands all nodes in a treeview instance.
+	
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			tree.expandAll();
+			
+	collapseAll() - collapses all nodes in a treeview instance
+	
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			tree.collapseAll();
+			
+	select(node) - selects the node 
+	
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			var node = tree.getNodeByText("Two");
+			tree.select(node);
+			
+	unSelect(node) - unselects the node 
+	
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			var node = tree.getNodeByText("Two");
+			tree.unSelect(node);
+			
+	unSelectAll() - unselect all selected nodes in a treeview
+		
+		example:
+			var tree = $("#JQTreeView1").getTreeViewInstance();
+			tree.unSelectAll();			
+	
+===========
+Node Options
+===========
+
+	You can get an [object] containing all options for a given tree node using the getNodeOptions(node) method. Options are read-only and modifying them will have no effect on the node or its parent treeview.
+		
+		example:	
+			var tree = $("#TreeViewID").getTreeViewInstance();
+			var node = tree.getNodeByValue("1");
+			var nodeOptions = tree.getNodeOptions(node);
+			alert(nodeOptions.text);
+			
+	Here is a list of all available node options:
+	
+		text - [string] - the text of the node
+		value - [string] - the value of the node
+		treeView - [object] - the instance of the client-side object of the treeview parent.
+		treeViewID - [string] - the ID of the instance of the client-side object of the treeview parent.
+		expanded - [boolean] - if the node is currently expanded
+		selected - [boolean] - if the node is currently selected
+		enabled - [boolean] - if the node is currently enabled
+		checked - [boolean] - if the node is currently checked
+		loadOnDemand - [boolean] - if the node triggers an AJAX load-on-demand request to the server
+		url - [string] - the URL the tree node leads to (could be empty)
+	

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_1369667020839">
+
+	<description>Empty web.xml file for Web Application</description>
+	<filter>
+    <filter-name>NtlmHttpFilter</filter-name>
+    <filter-class>jcifs.http.NtlmHttpFilter</filter-class>
+    <init-param>
+             <param-name>jcifs.http.domainController</param-name>
+             <param-value>172.16.30.2</param-value>
+    </init-param>
+    <init-param>
+             <param-name>jcifs.smb.client.domain</param-name>
+             <param-value>EBAOTECH</param-value>
+    </init-param>
+    <init-param>
+             <param-name>jcifs.smb.client.username</param-name>
+             <param-value>MISAD</param-value>
+    </init-param>
+    <init-param>
+             <param-name>jcifs.smb.client.password</param-name>
+             <param-value>dt_P6NbY</param-value>
+    </init-param>
+    <init-param>
+             <param-name>jcifs.util.loglevel</param-name>
+             <param-value>3</param-value>
+    </init-param>
+  </filter>
+
+	<filter-mapping>
+       <filter-name>NtlmHttpFilter</filter-name>
+       <url-pattern>/tsop/*</url-pattern>
+  </filter-mapping>
+
+
+  
+  <session-config>
+    <session-timeout>120</session-timeout>
+  </session-config>
+<!--
+  <servlet>
+    <servlet-name>DisplayChart</servlet-name>
+    <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayChart</servlet-name>
+    <url-pattern>/servlet/DisplayChart</url-pattern>
+  </servlet-mapping>
+-->
+  <mime-mapping>
+    <extension>html</extension>
+    <mime-type>text/html</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>txt</extension>
+    <mime-type>text/plain</mime-type>
+  </mime-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+    <jsp-config>
+        <jsp-property-group>
+            <description>HTML Encoding</description>
+            <display-name>HTML Encoding Config</display-name>
+            <url-pattern>*.html</url-pattern>
+            <el-ignored>true</el-ignored>
+            <page-encoding>gbk</page-encoding>
+            <scripting-invalid>true</scripting-invalid>
+        </jsp-property-group>
+    </jsp-config>
+</web-app>
+

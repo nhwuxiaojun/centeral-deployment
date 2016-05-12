@@ -1,0 +1,45 @@
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 8.1//EN" "http://www.bea.com/servers/wls810/dtd/weblogic810-web-jar.dtd">
+
+<weblogic-web-app>
+  <jsp-descriptor>
+    <jsp-param>
+      <param-name>keepgenerated</param-name>
+      <param-value>true</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>workingDir</param-name>
+      <param-value>jsp_tmp</param-value>
+    </jsp-param>
+<jsp-param>
+<param-name>encoding</param-name>
+<param-value>GBK</param-value>
+</jsp-param>
+<!-- 
+    <jsp-param>
+      <param-name>printNulls</param-name>
+      <param-value>true</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>pageCheckSeconds</param-name>
+      <param-value>-1</param-value>
+    </jsp-param>
+  -->
+  </jsp-descriptor>
+
+  <container-descriptor>
+<!-- 
+    <servlet-reload-check-secs>-1</servlet-reload-check-secs>
+    <resource-reload-check-secs>-1</resource-reload-check-secs>
+    <filter-dispatched-requests-enabled>false</filter-dispatched-requests-enabled>
+  -->
+    <prefer-web-inf-classes>true</prefer-web-inf-classes>
+  </container-descriptor>
+
+<charset-params> 
+    <input-charset> 
+        <resource-path>/*</resource-path> 
+      <java-charset-name>GBK</java-charset-name> 
+</input-charset>
+</charset-params>
+  
+</weblogic-web-app>

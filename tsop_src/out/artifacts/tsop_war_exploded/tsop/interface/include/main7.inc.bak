@@ -1,0 +1,52 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+
+    </tr>
+    <tr>
+      <td height="25" valign="middle" id="s2"><span class="arrow9px" id="a2">4</span> <span id="f2"><a href="../interface/ts_vpn.jsp" target="_self">客户VPN信息</a></span></td>
+    </tr>
+    <tr>
+      <td background="images/bg_line.gif"><img src="images/bg_line.gif" width="3" height="1"></td>
+    </tr>
+    <tr>
+      <td height="25" valign="middle" id="s2"><span class="arrow9px" id="a2">4</span> <span id="f2"><a href="../ts_member_query.jsp"  target="ifra1">TS成员信息</a></span></td>
+    </tr>
+    <tr>
+      <td background="images/bg_line.gif"><img src="images/bg_line.gif" width="3" height="1"></td>
+    </tr>
+    <tr>
+      <td height="25" valign="middle" id="s2"><span class="arrow9px" id="a2">4</span> <span id="f2"><a href="../ts_project_support_query.jsp"  target="ifra1">项目支持信息</a></span></td>
+    </tr>
+    <tr>
+      <td background="images/bg_line.gif"><img src="images/bg_line.gif" width="3" height="1"></td>
+    </tr>
+
+    <tr>
+      <td background="images/bg_line.gif"><img src="images/bg_line.gif" width="3" height="1"></td>
+    </tr>
+    <tr>
+      <td height="25" valign="middle" id="s2"><span class="arrow9px" id="a2">4</span> <span id="f2"><a href="http://wiki.ebaotech.com" target="_blank">知识共享</a></span></td>
+    </tr>
+    <tr>
+      <td background="images/bg_line.gif"><img src="images/bg_line.gif" width="3" height="1"></td>
+    </tr>
+	
+    <tr>
+      <td height="25" valign="middle" id="s2"><span class="arrow9px" id="a2">4</span> <span id="f2"><a href="http://172.16.7.235" target="_blank">服务器监控</a></span></td>
+    </tr>
+    <tr>
+      <td background="images/bg_line.gif"><img src="images/bg_line.gif" width="3" height="1"></td>
+    </tr>
+	
+	
+	 <tr>
+      <td height="25" valign="middle" id="s2"><span class="arrow9px" id="a2">4</span> <span id="f2"><a href="../ftp_info_query.jsp" target="ifra1">FTP查询</a></span></td>
+    </tr>
+    <tr>
+      <td background="images/bg_line.gif"><img src="images/bg_line.gif" width="3" height="1"></td>
+    </tr>
+	
+    <tr>
+      <td height="25">&nbsp;</td>
+    </tr>
+  </table>

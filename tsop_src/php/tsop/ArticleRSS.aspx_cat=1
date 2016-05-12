@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>CodeProject Latest Articles</title>
+    <link>http://www.codeproject.com</link>
+    <description>Latest Articles from CodeProject</description>
+    <language>en-us</language>
+    <image>
+      <title>CodeProject Latest Articles</title>
+      <url>http://www.codeproject.com/App_Themes/Std/Img/logo100x30.gif</url>
+      <link>http://www.codeproject.com</link>
+      <width>100</width>
+      <height>30</height>
+      <description>CodeProject</description>
+    </image>
+    <copyright>Copyright  CodeProject, 1999-2014</copyright>
+    <webMaster>Webmaster@codeproject.com (Webmaster)</webMaster>
+    <lastBuildDate>Thu, 02 Oct 2014 09:51:21 GMT</lastBuildDate>
+    <ttl>20</ttl>
+    <generator>C# Hand-coded goodness</generator>
+    <item d3p1:type="item" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <title>ASP.NET MVC Client Side Validation</title>
+      <description>This article explains how to implement client-side validation in an ASP.NET MVC application.</description>
+      <link>http://www.codeproject.com/Articles/718004/ASP-NET-MVC-Client-Side-Validation</link>
+      <author>Sandeep Singh Shekhawat</author>
+      <category>C#</category>
+      <category>ASP.NET</category>
+      <category>XML</category>
+      <category>HTML</category>
+      <category>jQuery</category>
+      <category>VS2013</category>
+      <pubDate>Thu, 02 Oct 2014 09:01:00 GMT</pubDate>
+      <subject />
+      <guid>http://www.codeproject.com/Articles/718004/ASP-NET-MVC-Client-Side-Validation</guid>
+    </item>
+    <item d3p1:type="item" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <title>Optimistic Concurrency in Entity Framework Code First</title>
+      <description>Handle optimistic concurrency using Entity Framework Code First.</description>
+      <link>http://www.codeproject.com/Articles/817432/Optimistic-Concurrency-in-Entity-Framework-Code-Fi</link>
+      <author>Dukhabandhu Sahoo</author>
+      <category>C#</category>
+      <category>ASP.NET</category>
+      <category>SQL</category>
+      <category>.NET</category>
+      <category>Dev</category>
+      <category>Beginner</category>
+      <category>SQL-server-2008R2</category>
+      <category>VS2013</category>
+      <category>EntityFramework5</category>
+      <category>EntityFramework6</category>
+      <pubDate>Thu, 02 Oct 2014 06:52:00 GMT</pubDate>
+      <subject />
+      <guid>http://www.codeproject.com/Articles/817432/Optimistic-Concurrency-in-Entity-Framework-Code-Fi</guid>
+    </item>
+    <item d3p1:type="item" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <title>Gain Coding Speed with Nido (FREE) Framework .NET/ C#</title>
+      <description>Nido Framework with .Net 4.0 and Entity Framework help you standardize your Business Logic Layer (BLL).</description>
+      <link>http://www.codeproject.com/Articles/698486/Introduction-to-Nido-FREE-Framework-NET-Csharp</link>
+      <author>Nirosh</author>
+      <category>C#</category>
+      <category>ASP.NET</category>
+      <category>SQL</category>
+      <category>Windows</category>
+      <category>.NET</category>
+      <category>IIS</category>
+      <category>Architect</category>
+      <category>DBA</category>
+      <category>Dev</category>
+      <category>ADO.NET</category>
+      <category>UML</category>
+      <category>WebForms</category>
+      <category>Beginner</category>
+      <category>Intermediate</category>
+      <category>Advanced</category>
+      <category>C#4.0</category>
+      <category>Web-Development</category>
+      <category>User-controls</category>
+      <category>Application</category>
+      <pubDate>Thu, 02 Oct 2014 05:34:00 GMT</pubDate>
+      <subject />
+      <guid>http://www.codeproject.com/Articles/698486/Introduction-to-Nido-FREE-Framework-NET-Csharp</guid>
+    </item>
+    <item d3p1:type="item" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <title>ASP.NET MVC Dynamic Routing</title>
+      <description>Learn how to route variable URL patterns to fixed Controller/Action</description>
+      <link>http://www.codeproject.com/Tips/825266/ASP-NET-MVC-Dynamic-Routing</link>
+      <author>Rohit Kukreti</author>
+      <category>C#</category>
+      <category>ASP.NET</category>
+      <category>Windows</category>
+      <category>Intermediate</category>
+      <category>MVC</category>
+      <pubDate>Thu, 02 Oct 2014 01:40:00 GMT</pubDate>
+      <subject />
+      <guid>http://www.codeproject.com/Tips/825266/ASP-NET-MVC-Dynamic-Routing</guid>
+    </item>
+    <item d3p1:type="item" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <title>How to Get REST Data and Display it in a DataGridView (or not) using JSON.NET</title>
+      <description>Get REST data and display it in a DataGridView</description>
+      <link>http://www.codeproject.com/Tips/712109/How-to-Get-REST-Data-and-Display-it-in-a-DataGridV</link>
+      <author>B. Clay Shannon</author>
+      <category>C#</category>
+      <category>ASP.NET</category>
+      <category>Windows</category>
+      <category>.NET</category>
+      <category>Dev</category>
+      <category>Intermediate</category>
+      <category>MVC</category>
+      <category>.NET4.5</category>
+      <pubDate>Wed, 01 Oct 2014 20:49:00 GMT</pubDate>
+      <subject />
+      <guid>http://www.codeproject.com/Tips/712109/How-to-Get-REST-Data-and-Display-it-in-a-DataGridV</guid>
+    </item>
+    <item d3p1:type="item" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <title>How to broadcast live IP camera stream as Flash video to your website using C#.NET</title>
+      <description>I’ll show how to build live IP camera streaming into your website by using C# to be able to monitor the area that is under video surveillance.</description>
+      <link>http://www.codeproject.com/Articles/825074/How-to-broadcast-live-IP-camera-stream-as-Flash-vi</link>
+      <author>Oliver_Hart</author>
+      <category>C#</category>
+      <category>.NET</category>
+      <category>Visual-Studio</category>
+      <category>HTML</category>
+      <category>CEO</category>
+      <category>Architect</category>
+      <category>Dev</category>
+      <category>Intermediate</category>
+      <category>Advanced</category>
+      <category>SysAdmin</category>
+      <category>Flash</category>
+      <category>VS2010</category>
+      <pubDate>Wed, 01 Oct 2014 14:15:00 GMT</pubDate>
+      <subject />
+      <guid>http://www.codeproject.com/Articles/825074/How-to-broadcast-live-IP-camera-stream-as-Flash-vi</guid>
+    </item>
+    <item d3p1:type="item" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <title>My Personal Software Development Stack</title>
+      <description>My Windows Sever 2003 reaches its end of life in 2015. I do not look forward to moving to Server 2012. Surely there has to be a better, portable, and cross platform solution that features zero install and fits on a USB stick.</description>
+      <link>http://www.codeproject.com/Tips/825085/My-Personal-Software-Development-Stack</link>
+      <author>James Dale</author>
+      <category>Javascript</category>
+      <category>Java</category>
+      <category>SQL</category>
+      <category>Windows</category>
+      <category>HTML</category>
+      <category>Dev</category>
+      <category>PHP</category>
+      <category>Beginner</category>
+      <category>Intermediate</category>
+      <category>Python</category>
+      <category>Ruby</category>
+      <category>Python2.4</category>
+      <category>Opensource</category>
+      <pubDate>Wed, 01 Oct 2014 13:55:00 GMT</pubDate>
+      <subject />
+      <guid>http://www.codeproject.com/Tips/825085/My-Personal-Software-Development-Stack</guid>
+    </item>
+    <item d3p1:type="item" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <title>Few Mandatory Things to Know for Using Bootstrap</title>
+      <description>Bootstrap Tips</description>
+      <link>http://www.codeproject.com/Tips/824784/Few-Mandatory-Things-to-Know-for-Using-Bootstrap</link>
+      <author>Shemeemsha RA</author>
+      <category>HTML</category>
+      <category>Dev</category>
+      <category>Design</category>
+      <category>Beginner</category>
+      <pubDate>Wed, 01 Oct 2014 13:26:00 GMT</pubDate>
+      <subject />
+      <guid>http://www.codeproject.com/Tips/824784/Few-Mandatory-Things-to-Know-for-Using-Bootstrap</guid>
+    </item>
+    <item d3p1:type="item" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <title>Tip to detect Online/Offline Mode</title>
+      <description>How to detect Online/Offline mode through code</description>
+      <link>http://www.codeproject.com/Tips/824940/Tip-to-detect-Online-Offline-Mode</link>
+      <author>Shrikant Dhar Dwivedi</author>
+      <category>Javascript</category>
+      <pubDate>Wed, 01 Oct 2014 13:10:00 GMT</pubDate>
+      <subject />
+      <guid>http://www.codeproject.com/Tips/824940/Tip-to-detect-Online-Offline-Mode</guid>
+    </item>
+    <item d3p1:type="item" xmlns:d3p1="http://www.w3.org/2001/XMLSchema-instance">
+      <title>ASP.NET Identity 2.0: Introduction to Working with Identity 2.0 and Web API 2.2</title>
+      <description>In recent posts, I've covered a lot of ground using ASP.NET Identity 2.0 in the context of an MVC application. Since it's RTM in March of this year, Identity 2.0 has offered a substantial expansion of the Authentication/Authorization . toolset available to MVC applications.   Similarly, Identity 2.0</description>
+      <link>http://www.codeproject.com/Articles/823263/ASP-NET-Identity-Introduction-to-Working-with-Iden</link>
+      <author>John Atten</author>
+      <category>ASP.NET</category>
+      <category>webapi</category>
+      <category>Identity</category>
+      <pubDate>Wed, 01 Oct 2014 12:14:00 GMT</pubDate>
+      <subject />
+      <guid>http://www.codeproject.com/Articles/823263/ASP-NET-Identity-Introduction-to-Working-with-Iden</guid>
+    </item>
+  </channel>
+</rss>

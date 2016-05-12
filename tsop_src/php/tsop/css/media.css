@@ -1,0 +1,25 @@
+body	{ font-size: 11px; font-family: Arial }
+td	{ font-size: 11px; color:#757575; line-height:18px }
+p	{ line-height:20px }
+ul	{ margin-left:18; margin-height:0; margin-top:0; margin-right:0; margin-bottom:0 }
+li	{ line-height:20px; list-style-position: outside }
+
+a       { font-size:11px; text-decoration: none; color: #00008C }
+
+a.itemtitle	{ font-size:12px; color: #00008C; font-weight:bold }
+
+a.item		{ text-decoration: underline }
+a.newsitem	{ text-decoration: underline; line-height:18px }
+
+.intro		{ font-size:12px; }
+.itemtitle	{ font-size:12px; color:#000000; font-weight:bold }
+.itemtitle_sub	{ color:#000000; font-weight:bold }
+.itemtitle14px	{ font-size:14px; color:#000000; font-weight:bold }
+.newsdate	{ font-weight:bold }
+.arrow9px	{ font-family: webdings; font-size: 9px; color: white}
+.fontarrow9px	{ font-family: webdings; font-size: 9px; color: #00008C}
+.fontarrow11px	{ font-family: webdings; font-size: 12px; color: #00008C }
+
+a.toplink:link {color: #FFFFFF; font-size: 9pt; font-family: ËÎÌו; text-decoration:none}
+a.toplink:visited{color: #FFFFFF; font-size: 9pt; font-family: ËÎÌו; text-decoration:none}
+a.toplink:hover {color: #FFFFFF; font-size: 9pt; font-family: ËÎÌו; text-decoration:none}

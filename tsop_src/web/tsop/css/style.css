@@ -1,0 +1,24 @@
+body    { font-family: 宋体; font-size: 12px; }
+td      { font-family: 宋体; font-size: 12px; line-height:18px }
+p	{ line-height:18px }
+ol	{ line-height:18px; margin-top:5}
+ul	{ line-height:18px; margin-height:0; margin-top:0; margin-right:0}
+input	{ font-family: 宋体; font-size: 12px; }
+
+input.textfield {
+	BACKGROUND: #FFFFFF; BORDER-BOTTOM: #999999 1px solid; BORDER-LEFT: #999999 1px solid; BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT: 11px 宋体 tahoma,arial,helvetica
+}
+
+a       { text-decoration: none; color: #003399 }
+a:hover { color: #0000FF }
+
+a.whitefont	{ color: #FFFFFF; text-decoration: none }
+a.whitefont:hover	{ color: #FFFF66; text-decoration: none }
+a.blackfont	{ color: #000000; text-decoration: none }
+a.submenu	{text-decoration: none; font-weight:bold}
+
+.en     	{ font-family: Verdana; font-size: 10px;}
+.en11		{ font-family: Verdana; font-size: 11px;}
+.font14		{ font-size: 14px; line-height: 20px}
+.font13		{ font-size: 13px; font-weight:bold}
+.font18B	{ font-size: 18px; font-weight:bold; font-color:#FF9900; line-height:24px}

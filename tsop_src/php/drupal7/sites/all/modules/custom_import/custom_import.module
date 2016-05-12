@@ -1,0 +1,307 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * A module to perform custom migration from one version of Drupal to another.
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function custom_import_menu() {
+  $items = array();
+
+  $items['admin/content/custom-import'] = array(
+    'title' => 'Custom import',
+    'description' => 'Run custom import routines to migrate from one Drupal version to another.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('custom_import_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+
+  return $items;
+}
+
+function custom_import_form() {
+  drupal_set_message('Are you sure you want to run the custom import script?  No going back without re-installing the database!!!', 'warning');
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Start import'),
+  );
+
+  return $form;
+}
+
+function custom_import_form_submit($form, &$form_state) {
+  $batch = array(
+    'title' => t('Importing data'),
+    'operations' => custom_import_batch_operations(),
+    'finished' => 'custom_import_batch_finished',
+  );
+
+  batch_set($batch);
+}
+
+function custom_import_batch_operations() {
+  $operations = array();
+
+  $operations[] = array('custom_import_batch_files', array());
+  $operations[] = array('custom_import_batch_nodes', array());
+  $operations[] = array('custom_import_batch_comments', array());
+
+  return $operations;
+}
+
+function custom_import_batch_finished($success, $results, $operations) {
+  if ($success) {
+    $message = t('Import finished successfully.');
+  }
+  else {
+    $message = t('Finished with an error.');
+  }
+  drupal_set_message($message);
+}
+
+
+function custom_import_batch_files(&$context) {
+  db_set_active('legacy'); // Switch databases.
+
+  // Build the total import count.
+  if (empty($context['sandbox'])) {
+    $query = db_select('files');
+    $query->addExpression('COUNT(fid)', 'count');
+    $max = $query->execute()->fetchField();
+
+    $context['sandbox'] = array(
+      'progress' => 0,
+      'current_file' => 0,
+      'max' => $max,
+    );
+  }
+
+  $limit = 40; // Number of files to process at a time.
+  $query = db_select('files', 'f');
+  $query->innerJoin('node', 'n', 'f.nid = n.nid');
+  $query->fields('f');
+  $query->fields('n', array('created'));
+  $query->orderBy('f.fid', 'asc');
+  $query->condition('fid', $context['sandbox']['current_file'], '>');
+  $result = $query->execute();
+
+  foreach ($result as $row) {
+    $file = (object) array(
+      'fid' => $row->fid,
+      'uid' => 1,
+      'filename' => $row->filename,
+      'uri' => 'public://' . str_replace('sites/quicksketch.org/files/', '', $row->filepath),
+      'filemime' => $row->filemime,
+      'filesize' => $row->filesize,
+      'status' => 1,
+      'timestamp' => $row->created,
+    );
+
+    db_set_active('default');
+    drupal_write_record('file_managed', $file);
+
+    $context['message'] = t('Importing file @name', array('@name' => $file->filename));
+    $context['sandbox']['current_file'] = $row->fid;
+    $context['sandbox']['progress']++;
+  }
+
+  db_set_active('default'); // Switch back.
+
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }
+}
+
+function custom_import_batch_nodes(&$context) {
+  db_set_active('legacy'); // Switch databases.
+
+  // Build the total import count.
+  if (empty($context['sandbox'])) {
+    $query = db_select('node');
+    $query->condition('type', array('feed', 'feed_item', 'page'), 'NOT IN');
+    $query->addExpression('COUNT(nid)', 'count');
+    $max = $query->execute()->fetchField();
+
+    $context['sandbox'] = array(
+      'progress' => 0,
+      'current_node' => 0,
+      'max' => $max,
+    );
+  }
+
+  $limit = 20; // Number of nodes to process at a time.
+  $query = db_select('node', 'n');
+  $query->join('node_revisions', 'nr', 'nr.vid = n.vid');
+  $query->orderBy('n.nid', 'asc');
+  $query->fields('n');
+  $query->fields('nr', array('body', 'teaser', 'format'));
+  $query->condition('n.nid', $context['sandbox']['current_node'], '>');
+  $query->condition('n.type', array('feed', 'feed_item', 'page'), 'NOT IN');
+  $result = $query->execute();
+
+  foreach ($result as $row) {
+    $node = (object) array(
+      'type' => $row->type == 'story' ? 'article' : $row->type,
+      'nid' => $row->nid,
+      'vid' => $row->vid,
+      'uid' => 1,
+      'status' => $row->status,
+      'language' => LANGUAGE_NONE,
+      'created' => $row->created,
+      'changed' => $row->changed,
+      'comment' => $row->comment,
+      'promote' => $row->promote,
+      'title' => $row->title,
+      'body' => array(LANGUAGE_NONE => array(array('value' => $row->body, 'summary' => $row->teaser, 'format' => 'wysiwyg'))),
+      'teaser' => $row->teaser,
+      'log' => '',
+    );
+
+    db_set_active('legacy'); // Switch databases.
+
+    // Migrate file uploads to a file field.
+    $query = db_select('file_revisions', 'fr');
+    $query->fields('fr');
+    $query->condition('fr.vid', $row->vid);
+    $file_results = $query->execute();
+    foreach ($file_results as $file) {
+      if ($file->fid) {
+        $node->field_files[LANGUAGE_NONE][] = array('fid' => $file->fid, 'display' => $file->list, 'description' => $file->description);
+      }
+    }
+
+    // Migrate images from one image field to another.
+    $query = db_select('content_field_image', 'f');
+    $query->fields('f');
+    $query->condition('vid', $row->vid);
+    $image_results = $query->execute();
+    foreach ($image_results as $image) {
+      if ($image->field_image_fid) {
+        $node->field_image[LANGUAGE_NONE][] = array('fid' => $image->field_image_fid, 'title' => '', 'alt' => '');
+      }
+    }
+
+    // Migrate links from a link field to a text field.
+    $query = db_select('content_field_link', 'f');
+    $query->fields('f');
+    $query->condition('vid', $row->vid);
+    $link_results = $query->execute();
+    foreach ($link_results as $link) {
+      if ($link->field_link_url) {
+        $node->field_link[LANGUAGE_NONE][] = array('value' => $link->field_link_url);
+        break; // Only import the first link, this is a single-value field now.
+      }
+    }
+
+    // Migrate story-specific fields.
+    if ($node->type == 'article') {
+      $query = db_select('content_type_story', 'f');
+      $query->fields('f');
+      $query->condition('vid', $row->vid);
+      $story_results = $query->execute();
+      foreach ($story_results as $story) {
+        $node->field_border[LANGUAGE_NONE][0] = array('value' => (int) $story->field_image_border_value);
+      }
+    }
+
+    // Migrate portfolio-specific fields.
+    if ($node->type == 'portfolio') {
+      $query = db_select('content_type_portfolio', 'f');
+      $query->fields('f');
+      $query->condition('vid', $row->vid);
+      $portfolio_results = $query->execute();
+      foreach ($portfolio_results as $portfolio) {
+        $node->field_image_link[LANGUAGE_NONE][0] = array('value' => (int) ($portfolio->field_display_type_value == 'Image'));
+        $node->field_completion_date[LANGUAGE_NONE][0] = array('value' => date('F j, Y', strtotime($portfolio->field_completion_date_value)));
+      }
+    }
+
+    // Migrate taxonomies.
+    $query = db_select('term_node', 'tn');
+    $query->join('term_data', 'td', 'tn.tid = td.tid');
+    $query->fields('tn');
+    $query->fields('td');
+    $query->condition('tn.nid', $row->nid);
+    $term_results = $query->execute();
+    foreach ($term_results as $term) {
+      switch ($term->vid) {
+        case 3: // Portfolio category.
+          $node->field_portfolio_category[LANGUAGE_NONE][] = array('tid' => $term->tid);
+          break;
+        case 7: // Mode.
+          $node->field_mode[LANGUAGE_NONE][] = array('tid' => $term->tid);
+          break;
+        case 6: // Tags.
+          $node->field_tags[LANGUAGE_NONE][] = array('tid' => $term->tid);
+      }
+    }
+
+    // To maintain the same NID, use drupal_write_record() first, then save.
+    db_set_active('default');
+    drupal_write_record('node', $node);
+    drupal_write_record('node_revision', $node);
+    node_save($node);
+
+    $context['message'] = t('Importing node @title', array('@title' => $node->title));
+    $context['sandbox']['current_node'] = $row->nid;
+    $context['sandbox']['progress']++;
+  }
+
+  db_set_active('default'); // Switch back.
+
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }
+}
+
+//custom_import_batch_news_comments
+
+function custom_import_batch_comments(&$context) {
+  $previous_db = db_set_active('legacy'); // Switch databases.
+
+  // Build the total import count.
+  if (empty($context['sandbox'])) {
+    $query = db_select('comments');
+    $query->addExpression('COUNT(cid)', 'count');
+    $max = $query->execute()->fetchField();
+
+    $context['sandbox'] = array(
+      'progress' => 0,
+      'current_comment' => 0,
+      'max' => $max,
+    );
+  }
+
+  $limit = 20; // Number of nodes to process at a time.
+  $query = db_select('comments', 'c');
+  $query->fields('c');
+  $query->orderBy('c.cid', 'asc');
+  $query->condition('cid', $context['sandbox']['current_comment'], '>');
+  $result = $query->execute();
+
+  db_set_active('default');
+  foreach ($result as $row) {
+    $comment = (object) $row;
+    $comment->language = LANGUAGE_NONE;
+    $comment->status = (int) !$row->status; // Flipped between D6 and D7.
+    $comment->created = $row->timestamp;
+    $comment->changed = $row->timestamp;
+    $comment->comment_body[LANGUAGE_NONE][0] = array('value' => $row->comment, 'format' => 'filtered_html');
+
+    // To maintain the same CID, use drupal_write_record() first, then save.
+    drupal_write_record('comment', $comment);
+    comment_save($comment);
+
+    $context['message'] = t('Importing comment @subject', array('@subject' => $comment->subject));
+    $context['sandbox']['current_comment'] = $row->cid;
+    $context['sandbox']['progress']++;
+  }
+
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }
+}

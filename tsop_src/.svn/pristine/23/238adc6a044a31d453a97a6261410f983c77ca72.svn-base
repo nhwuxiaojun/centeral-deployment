@@ -1,0 +1,4 @@
+url=jdbc:mysql://172.16.7.6:3306/tsop
+driver=com.mysql.jdbc.Driver
+user=root
+password=mysql1,

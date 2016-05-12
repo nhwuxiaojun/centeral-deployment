@@ -1,0 +1,3 @@
+The selected property of each JQTreeNode instance can be set to mark 
+the node as selected. The JavaScript  tree.getSelectedNodes() holds a list of all selected nodes on the client-side.
+When set multipleSelect to true - we can select multiple nodes using Ctrl + Mouse Click 

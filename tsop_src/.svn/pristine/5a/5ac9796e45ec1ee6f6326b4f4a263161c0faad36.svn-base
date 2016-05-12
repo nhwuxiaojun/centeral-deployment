@@ -1,0 +1,9 @@
+run {
+allocate channel d1 type disk;
+sql "ALTER SYSTEM ARCHIVE LOG CURRENT";
+backup full database skip inaccessible format '/oraback/FULLBK_%d_%T_%s_%p';
+release channel d1;
+}
+allocate channel for maintenance type disk;
+crosscheck backup;
+delete NOPROMPT FORCE obsolete;

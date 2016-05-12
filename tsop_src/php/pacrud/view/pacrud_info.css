@@ -1,0 +1,58 @@
+body, td, th, h1, h2 {
+	font-family: sans-serif;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+.center {
+	text-align: center;
+}
+
+.center table {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
+
+.center th {
+	text-align: center;
+}
+
+td, th {
+	border: 1px solid #000000;
+	font-size: 75%;
+}
+
+h1 {
+	font-size: 150%;
+}
+
+h2 {
+	font-size: 125%;
+}
+
+.e {
+	background-color: #ccccff;
+	font-weight: bold;
+	 color: #000000;
+}
+
+.h {
+	background-color: #9999cc;
+	font-weight: bold;
+	color: #000000;
+}
+
+.v {
+	background-color: #cccccc;
+	color: #000000;
+}
+
+img {
+	float: right;
+	border: 0px;
+	margin:5px;
+}
+

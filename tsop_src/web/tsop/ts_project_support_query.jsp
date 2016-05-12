@@ -1,0 +1,539 @@
+<%@ include file="interface/check.jsp" %>
+<%@ page contentType="text/html; charset=gbk" language="java" import="java.sql.*" errorPage="" %>
+<%@ page import="java.io.*" %>
+<%@ page import="ebao.DBean" %>
+<%@ page import="ebao.Tools" %>
+<html>
+<head>
+    <title>TS项目支持信息查询</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+    <link href="css/ebao.css" rel="stylesheet" type="text/css">
+    <script src="scripts/jquery-1.11.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#maintable tbody tr").hover(function () {
+                // $("#orderedlist li:last").hover(function() {
+                $(this).addClass("blue");
+                //$("#maintable tbody tr td input").addClass("blue");
+                //$("#maintable tbody tr td select").addClass("blue");
+            }, function () {
+                $(this).removeClass("blue");
+                //$("#maintable tbody tr td input").removeClass("blue");
+                //$("#maintable tbody tr td select").removeClass("blue");
+            });
+            $('#col_value1').focus();
+
+        });
+    </script>
+    <style>
+        .blue {
+            background: #ffff00;
+        }
+    </style>
+</head>
+<script language="JavaScript">
+    window.onload = function () {
+    };
+    function check() {
+        var form11 = document.getElementById("form1");
+        var act1 = document.getElementById("flag");
+        act1.value = "y";
+        //form11.target="_blank";
+        form11.action = "ts_project_support_query.jsp";
+        form11.method = "post";
+        form11.submit();
+        //form1.submit();
+    }
+    function print_proj() {
+        var form11 = document.getElementById("form1");
+        var act1 = document.getElementById("flag");
+        act1.value = "print";
+        //form11.target="_blank";
+        form11.action = "ts_project_support_query.jsp";
+        form11.method = "post";
+        form11.submit();
+    }
+    function add_proj() {
+        var proj_name = document.getElementById("a_proj_name").value;
+        var proj_id = document.getElementById("a_proj_id").value;
+        if (proj_name == null || proj_name == '') {
+            alert("Please input project name!");
+            document.getElementById("a_proj_name").focus();
+            return;
+        }
+        if (proj_id == null || proj_id == '') {
+            alert("Please input project code!");
+            document.getElementById("a_proj_id").focus();
+
+        } else {
+            var form11 = document.getElementById("form3");
+            form11.action = "ts_project_support_query.jsp";
+            //var act13 = document.getElementById("a_proj_name");
+            //act13.value=proj_name;
+            //var act13 = document.getElementById("a_proj_grp");
+            //act13.value=proj_name.toUpperCase();
+            //var act12 = document.getElementById("a_proj_id");
+            //act12.value=proj_id;
+            //var act11 = document.getElementById("act");
+            //act11.value="insert";
+            form11.method = "post";
+            form11.submit();
+        }
+    }
+    function insert_proj() {
+        form2.method = "post";
+        form2.submit();
+    }
+    function update_proj(tmpid,tmpname, act) {
+        if (confirm('确认更新?')) {
+            var form11 = document.getElementById("form2");
+            var act11 = document.getElementById("s_owner1");
+            act11.value = document.getElementById(tmpname + "_1").value;
+            var act12 = document.getElementById("s_owner2");
+            act12.value = document.getElementById(tmpname + "_2").value;
+            var act15 = document.getElementById("cost1");
+            act15.value = document.getElementById(tmpname + "_cost1").value;
+            var act15 = document.getElementById("cost2");
+            act15.value = document.getElementById(tmpname + "_cost2").value;
+            var act21 = document.getElementById("DM");
+            act21.value = document.getElementById(tmpname + "_DM").value;
+            var act22 = document.getElementById("CM");
+            act22.value = document.getElementById(tmpname + "_CM").value;
+            var act13 = document.getElementById("act");
+            act13.value = "update";
+            var act14 = document.getElementById("proj_id");
+            act14.value = tmpid;
+            var act16 = document.getElementById("col_name1");
+            var act17 = document.getElementById("col_value1");
+            var act18 = document.getElementById("s_name");
+            form11.action = "ts_project_support_query.jsp?flag=y&col_name1=" + act16.value + "&col_value1=" + act17.value + "&s_name=" + act18.value+ "&env_proj_name=" + tmpname+"&TMPDM="+act21.value+"&TMPCM="+act22.value;
+            //alert(document.getElementById(tmpid+"_1").value);
+            //alert(document.getElementById(tmpid+"_2").value);
+            form11.method = "post";
+            form11.submit();
+            //form2.action="ts_project_support_query.jsp?flag=y&col_name1="+act16.value+"&col_value1="+act17.value+"&s_name="+act18.value;
+            //form2.submit();
+        }
+    }
+    function del_proj(tmpid, act) {
+        if (confirm('确认删除?')) {
+            var form11 = document.getElementById("form2");
+            form11.action = "ts_project_support_query.jsp";
+            var act13 = document.getElementById("act");
+            act13.value = "delete";
+            var act14 = document.getElementById("proj_id");
+            act14.value = tmpid;
+            //alert(document.getElementById(tmpid+"_1").value);
+            //alert(document.getElementById(tmpid+"_2").value);
+            form11.method = "post";
+            form11.submit();
+        }
+    }
+    function delete_proj() {
+        form2.method = "post";
+        form2.submit();
+    }
+</script>
+<script language="JavaScript" for="document" event="onkeypress">
+    if (event.keyCode == 13) {
+        check();
+    }
+</script>
+<body>
+<%@include file="includes/head.html" %>
+<%
+    DBean db = new DBean();
+    String sql = new String();
+    String sql1 = new String();
+    String sql2 = new String();
+    String sql3 = new String();
+    int i = 0;
+    float sum1 = 0;
+    float sum2 = 0;
+    String array1[][];
+    array1 = new String[50][2];
+    ResultSet rs;
+    ResultSet rs1;
+    ResultSet rs2;
+    ResultSet rs3;
+
+// For search
+    String tmpact = request.getParameter("act");
+    String tmpid = request.getParameter("proj_id");
+    String tmpowner1 = request.getParameter("s_owner1");
+    String tmpowner2 = request.getParameter("s_owner2");
+    String tmpcost1 = request.getParameter("cost1");
+    String tmpcost2 = request.getParameter("cost2");
+    String dm = request.getParameter("DM");
+    String cm = request.getParameter("CM");
+    String tmpdm = request.getParameter("TMPDM");
+    String tmpcm = request.getParameter("TMPCM");
+    String env_proj_name = request.getParameter("env_proj_name");
+
+// For print
+    String tmpflag = request.getParameter("flag");
+    System.out.println("Flag is:" + tmpflag);
+
+// For add 
+    String tmpa_proj_grp = request.getParameter("a_proj_grp");
+    String tmpa_proj_name = request.getParameter("a_proj_name");
+    String tmpa_proj_id = request.getParameter("a_proj_id");
+    String tmpa_owner1 = request.getParameter("a_owner1");
+    System.out.println(tmpa_proj_grp + tmpa_proj_name + tmpa_proj_id + tmpa_owner1);
+    if (!("".equals(request.getParameter("a_proj_name")) || request.getParameter("a_proj_name") == null)) {
+        String insert_sql = "insert into ts_proj(proj_id,proj_grp,proj_name,owner1,owner2) values('" + tmpa_proj_id + "','" + tmpa_proj_grp + "','" + tmpa_proj_name + "','" + tmpa_owner1 + "','" + tmpa_owner1 + "')";
+        System.out.println(insert_sql);
+        try {
+            db.execUpdate(insert_sql);
+            out.print("<center>项目" + tmpa_proj_name + "Create Succeed!</center>");
+        } catch (Exception e) {
+            out.print("<center>新增失败，项目名称" + tmpa_proj_name + "或项目代码" + tmpa_proj_id + "已经存在!</center>");
+            //out.print("<script javascript><!-- alert('test'); --></script>");
+        }
+    }
+//System.out.println(s_owner1+s_owner2+tmpact+tmpid);
+    System.out.println("dm and cm are:" + dm + " and " + cm);
+
+
+    if ("update".equals(tmpact)) {
+        String update_sql = "update ts_proj set ts_cost1=" + tmpcost1 + ",ts_cost2=" + tmpcost2 + ",owner1=" + tmpowner1 + ",owner2=" + tmpowner2 + ",dm='" + tmpdm + "',cm='" + tmpcm + "' where proj_id=" + tmpid+ " and proj_name="+ "'"+env_proj_name+"'";
+
+        System.out.println(update_sql);
+        try {
+            db.execUpdate(update_sql);
+        } catch (Exception e) {
+            out.print("<center>新增失败，项目名称" + tmpa_proj_name + "或项目代码" + tmpa_proj_id + "已经存在!</center>");
+            //out.print("<script javascript><!-- alert('test'); --></script>");
+        }
+    }
+
+    if ("delete".equals(tmpact)) {
+        String delete_sql = "delete from ts_proj where proj_id=" + tmpid;
+        System.out.println(session.getAttribute("username") + ":" + delete_sql);
+        try {
+            db.execUpdate(delete_sql);
+            out.print("<center>项目" + tmpid + "删除成功！</center>");
+        } catch (Exception e) {
+            out.print("<center>新增失败，项目名称" + tmpa_proj_name + "或项目代码" + tmpa_proj_id + "已经存在!</center>");
+            //out.print("<script javascript><!-- alert('test'); --></script>");
+        }
+    }
+
+    sql3 = "select NO,ACCOUNT from ts_member where resign=0 order by account";
+    rs3 = db.execSQL(sql3);
+    while (rs3.next()) {
+        array1[i][0] = rs3.getString("NO");
+        array1[i][1] = rs3.getString("ACCOUNT");
+        i++;
+    }
+    System.out.println("s_name is:" + request.getParameter("s_name"));
+    System.out.println("Search value:" + request.getParameter("col_value1") + "\nSearch condition:" + request.getParameter("col_name1"));
+
+
+    if ("y".equals(request.getParameter("flag")) || "print".equals(request.getParameter("flag"))) {
+        if ("".equals(request.getParameter("col_value1")) || request.getParameter("col_value1") == null) {
+            if ("all".equals(request.getParameter("s_name"))) {
+                sql = "select * from ts_proj where  valid=1 order by proj_grp,proj_name";
+            } else {
+                sql = "select * from ts_proj where valid=1 and (owner1=" + request.getParameter("s_name") + " or owner2=" + request.getParameter("s_name") + ") order by proj_grp,proj_name ";
+            }
+
+        } else {
+            sql = "select * from ts_proj where valid=1 and upper(" + request.getParameter("col_name1").toString() + ") like '%" + request.getParameter("col_value1").toString().trim().toUpperCase() + "%' order by proj_grp,proj_name";
+        }
+    } else {
+        sql = "select * from ts_proj where valid=1 and rownum<20 order by proj_grp,proj_name ";
+    }
+    System.out.print(sql + "\n");
+    rs = db.execSQL(sql);
+%>
+<div align="center"><font color="#3333cc"><strong><br>
+    <span class="s105">TS项目支持信息维护及发布权限管理</span></strong></font>
+</div>
+<br>
+<%if ("".equals(request.getParameter("info"))) {%>
+
+<%} else {%>
+<div align="center"><font color="#FF0000" style="{font-size:9pt;}"><%=Tools.toGB(request.getParameter("info"))%>
+</font></div>
+<%}%>
+<form id="form1" name="form1" action="" method="post" class="en">
+    <input id="flag" name="flag" value="y" type=hidden>
+    <table align="center" cellpadding="0" cellspacing="0" border="0" width="98%">
+        <tr>
+            <td align="center" class="en" width="20%">
+                <select id="col_name1" name="col_name1" class="en">
+                    <%if ("".equals(request.getParameter("col_name1")) || request.getParameter("col_name1") == null) {%>
+                    <option value="proj_name">项目名称</option>
+                    <option value="proj_grp">项目属组</option>
+                    <option value="proj_id">项目代码</option>
+                    <%} else {%>
+                    <option value="proj_name">项目名称</option>
+                    <option value="proj_grp">项目属组</option>
+                    <option value="proj_id">项目代码</option>
+                    <%}%>
+                </select>
+                <%if ("".equals(request.getParameter("col_value1")) || request.getParameter("col_value1") == null) {%>
+                <input type="text" id="col_value1" name="col_value1" value="" class="en" size="15">&nbsp;
+                <%} else {%>
+                <input type="text" id="col_value1" name="col_value1" value="<%=request.getParameter("col_value1")%>"
+                       class="en" size="15">&nbsp;
+                <%}%>
+                <select name="s_name" id="s_name">
+                    <%
+                        for (int j = 0; j < i; j++) {
+                            if (array1[j][0].equals(request.getParameter("s_name"))) {
+                                out.print("<option selected=selected value=" + array1[j][0] + ">" + array1[j][1] + "</option>");
+                                System.out.print("<option value=" + array1[j][0] + ">" + array1[j][1] + "</option>\n");
+                                System.out.print(request.getParameter("s_name"));
+                            } else {
+                                out.print("<option value=" + array1[j][0] + ">" + array1[j][1] + "</option>");
+                            }
+                        }
+                        if ("all".equals(request.getParameter("s_name")) || request.getParameter("s_name") == null) {
+                            out.print("<option value=all selected=selected>all</option>");
+                        } else {
+                            out.print("<option value=all>all</option>");
+                        }
+                    %>
+                </select>
+                <input type="button" name="query" value="查询" class="en" onClick="check()">
+                <input type="button" name="print" value="打印" class="en" onClick="print_proj()">
+                <input type="button" name="return" value="返回" class="en" onClick="history.go(-1);">
+            </td>
+        </tr>
+        <%sql = "select * from a_user where usr='" + session.getAttribute("username") + "'";%>
+        <%rs2 = db.execSQL(sql);%>
+        <%while (rs2.next()) {%>
+        <%if (!"1".equals(rs2.getString("valid"))) {%>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center">
+                <form name="form3" action="ts_project_support_query.jsp">
+                    项目属组：<select name="a_proj_grp">
+                    <%
+                        sql = "select distinct proj_grp from ts_proj order by proj_grp";
+                        rs3 = db.execSQL(sql);
+                        while (rs3.next()) {
+                            out.print("<option value=" + rs3.getString("PROJ_GRP") + ">" + rs3.getString("PROJ_GRP") + "</option>");
+                        }
+
+                    %></select>
+                    项目名称：<input name="a_proj_name" size=15>
+                    项目代码：<input name="a_proj_id" size=10>
+                    OWNER1:<select name="a_owner1">
+                    <%
+                        for (int j = 0; j < i; j++) {
+                            out.print("<option value=" + array1[j][0] + ">" + array1[j][1] + "</option>");
+                        }
+                    %>
+                </select>
+                    <input type="submit" name="new" value="Create" class="en">
+                </form>
+            </td>
+        </tr>
+        <%
+                }
+            }
+        %>
+    </table>
+    <input type="hidden" name="flag" value="y">
+</form>
+<form id="form2" name="form2">
+    <input name="act" id="act" type=hidden>
+    <input name="proj_id" id="proj_id" type=hidden>
+    <input name="s_owner1" id="s_owner1" type=hidden>
+    <input name="s_owner2" id="s_owner2" type=hidden>
+    <input name="cost1" id="cost1" type=hidden>
+    <input name="cost2" id="cost2" type=hidden>
+    <input name="DM" id="DM" type=hidden>
+    <input name="CM" id="CM" type=hidden>
+    <table id="maintable" style="table-layout: fixed" width="98%" border="1" cellpadding="1" cellspacing="1"
+           bordercolorlight="#9E9E9E" bordercolordark="#EFEFEF" align="center">
+        <%sql = "select * from a_user where usr='" + session.getAttribute("username") + "'";%>
+        <%rs2 = db.execSQL(sql);%>
+        <%while (rs2.next()) {%>
+        <%if ("1".equals(rs2.getString("valid")) || "2".equals(rs2.getString("valid")) && (!"print".equals(request.getParameter("flag")))) {%>
+        <tr height="25" bgcolor="#D2D2D2">
+            <td align="center" class="en" width="2%"><font color="#3333cc"><strong>项目组</strong></font></td>
+            <td align="center" class="en" width="4%"><font color="#3333cc"><strong>项目名称</strong></font></td>
+            <td align="center" class="en" width="3%"><font color="#3333cc"><strong>项目代码</strong></font></td>
+            <td align="center" class="en" width="4%"><font color="#3333cc"><strong>OWNER1</strong></font></td>
+            <td align="center" class="en" width="2%"><font color="#3333cc"><strong>COST1</strong></font></td>
+            <td align="center" class="en" width="4%"><font color="#3333cc"><strong>OWNER2</strong></font></td>
+            <td align="center" class="en" width="2%"><font color="#3333cc"><strong>COST2</strong></font></td>
+            <td align="center" class="en" width="9%"><font color="#3333cc"><strong>发布权限用户列表(逗号分开)</strong></font></td>
+            <td align="center" class="en" width="4%"><font color="#3333cc"><strong>CM</strong></font></td>
+            <td align="center" class="en" width="2%"><font color="#3333cc"><strong>Update</strong></font></td>
+            <td align="center" class="en" width="2%"><font color="#3333cc"><strong>Delete</strong></font></td>
+        </tr>
+        <tbody>
+        <%
+            while (rs.next()) {
+                sum1 = sum1 + rs.getFloat("TS_COST1");
+                sum2 = sum2 + rs.getFloat("TS_COST2");
+        %>
+        <tr height="25" bgcolor="#FCFCFC">
+            <td align="center" class="en"><font color="#3333cc"><%=rs.getString("PROJ_GRP")%>
+            </font></td>
+            <td align="center" class="en"><font color="#3333cc"><%=rs.getString("PROJ_NAME")%>
+            </font></td>
+            <td align="center" class="en"><font color="#3333cc"><%=rs.getString("PROJ_ID")%>
+            </font></td>
+            <td align="center" class="en"><font color="#3333cc">
+                <select width="40" name=<%out.print(rs.getString("PROJ_NAME")+"_1");%> id=<%
+                    out.print(rs.getString("PROJ_NAME") + "_1");%>>
+                    <%
+                        for (int j = 0; j < i; j++) {
+                            out.print("<option value=" + array1[j][0] + ">" + array1[j][1] + "</option>");
+                        } // end of for
+                        sql1 = "select NO,ACCOUNT from ts_member where resign=0 and no=" + rs.getLong("OWNER1");
+                        rs1 = db.execSQL(sql1);
+                        //System.out.println(sql1);
+                        while (rs1.next()) {
+                            //	out.println(rs1.getString("ACCOUNT"));
+                            for (int j = 0; j < i; j++) {
+                                if (array1[j][1].equals(rs1.getString("ACCOUNT"))) {
+                                    out.print("<option selected=selected value=" + array1[j][0] + ">" + array1[j][1] + "</option>");
+                                }
+                                //	else {
+                                //	out.print("<option value="+array1[j][0]+">"+array1[j][1]+"</option>");
+                                //	}
+                            } // end of for
+                        } // end of while rs1.next
+                    %>
+                </select>
+            </font></td>
+
+            <td align="center" class="en"><input
+                    id=<%out.print(rs.getString("PROJ_NAME")+"_cost1");%> value=<%=rs.getFloat("TS_COST1")%> size=3></td>
+            <td align="center" class="en"><font color="#3333cc">
+                <select name=<%out.print(rs.getString("PROJ_NAME")+"_2");%> id=<%
+                    out.print(rs.getString("PROJ_NAME") + "_2");%>>
+                    <%
+                        for (int j = 0; j < i; j++) {
+                            out.print("<option value=" + array1[j][0] + ">" + array1[j][1] + "</option>");
+                        }
+                        sql1 = "select ACCOUNT from ts_member where resign=0 and no=" + rs.getLong("OWNER2");
+                        rs1 = db.execSQL(sql1);
+                        //System.out.println(sql1);
+                        while (rs1.next()) {
+                            //out.println(rs1.getString("ACCOUNT"));
+                            for (int j = 0; j < i; j++) {
+                                if (array1[j][1].equals(rs1.getString("ACCOUNT"))) {
+                                    out.print("<option selected=selected value=" + array1[j][0] + ">" + array1[j][1] + "</option>");
+                                }
+                                //	else {
+                                //	out.print("<option value="+array1[j][0]+">"+array1[j][1]+"</option>");
+                                //	}
+                            } // end of for
+                        } // end of rs1.next
+                    %>
+                </select>
+            </td>
+
+            <td align="center" class="en"><input
+                    id=<%out.print(rs.getString("PROJ_NAME")+"_cost2");%> value=<%=rs.getFloat("TS_COST2")%> size=3></td>
+            <td align="left" class="en"><input id="<%=rs.getString("PROJ_NAME")%>_DM"
+                                               value=<%=rs.getString("DM")%> size=45></td>
+            <td align="center" class="en"><input id="<%=rs.getString("PROJ_NAME")%>_CM"
+                                                 value=<%=rs.getString("CM")%> size=14></td>
+            <td align="center" class="en"><font color="#3333cc">
+                <button onClick="update_proj(<%=rs.getString("PROJ_ID")%>,'<%=rs.getString("PROJ_NAME")%>','update')">Update</button></td>
+            <td align="center" class="en">
+                <button onClick="del_proj(<%=rs.getString("PROJ_NAME")%>,'delete')">Delete</button>
+            </td>
+        </tr>
+        <%} // end of rs.next%>
+
+        <tr bgcolor="#D2D2D2">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td align="center" class="en">合计：<%=sum1%>
+            </td>
+            <td></td>
+            <td align="center" class="en">合计：<%=sum2%>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <%} else {%>
+        <tr bgcolor="#D2D2D2">
+            <td align="center" class="en" width="4%"><font color="#3333cc"><strong>项目组</strong></font></td>
+            <td align="center" class="en" width="8%"><font color="#3333cc"><strong>项目名称</strong></font></td>
+            <td align="center" class="en" width="6%"><font color="#3333cc"><strong>项目代码</strong></font></td>
+            <td align="center" class="en" width="8%"><font color="#3333cc"><strong>OWNER1</strong></font></td>
+            <td align="center" class="en" width="4%"><font color="#3333cc"><strong>COST1</strong></font></td>
+            <td align="center" class="en" width="8%"><font color="#3333cc"><strong>OWNER2</strong></font></td>
+            <td align="center" class="en" width="4%"><font color="#3333cc"><strong>COST2</strong></font></td>
+
+        </tr>
+        <%
+            while (rs.next()) {
+                sum1 = sum1 + rs.getFloat("TS_COST1");
+                sum2 = sum2 + rs.getFloat("TS_COST2");
+                System.out.println(rs.getString("PROJ_NAME") + rs.getString("OWNER2") + rs.getString("OWNER1"));
+        %>
+
+        <tr bgcolor="#FCFCFC">
+            <td align="center" class="en"><font color="#3333cc"><%=rs.getString("PROJ_GRP")%>
+            </font></td>
+            <td align="center" class="en"><font color="#3333cc"><%=rs.getString("PROJ_NAME")%>
+            </font></td>
+            <td align="center" class="en"><font color="#3333cc"><%=rs.getString("PROJ_ID")%>
+            </font></td>
+            <td align="center" class="en"><font color="#3333cc">
+                <%
+                    sql1 = "select NO,ACCOUNT from ts_member where resign=0 and no=" + rs.getLong("OWNER1");
+                    rs1 = db.execSQL(sql1);
+
+                    while (rs1.next()) {
+                        out.println(rs1.getString("ACCOUNT"));
+                    }
+                    rs1.close();
+                %>
+            </font></td>
+            <td align="center" class="en"><font color="#3333cc"><%=rs.getFloat("TS_COST1")%>
+            </font></td>
+            <td align="center" class="en"><font color="#3333cc">
+                <%
+                    sql1 = "select ACCOUNT from ts_member where resign=0 and  no=" + rs.getLong("OWNER2");
+                    rs1 = db.execSQL(sql1);
+                    //rs1.last();
+                    //System.out.println(rs1.getRow());
+                    //rs1.beforeFirst();
+                    //System.out.println(sql1);
+                    while (rs1.next()) {
+                        out.println(rs1.getString("ACCOUNT"));
+                        //out.println(rs.getLong("OWNER2"));
+                    }
+                %>
+            </font></td>
+            <td align="center" class="en"><font color="#3333cc"><%=rs.getFloat("TS_COST2")%>
+            </font></td>
+        </tr>
+        <%}%>
+
+        <tr bgcolor="#D2D2D2">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td align="center" class="en">合计：<%=sum1%>
+            </td>
+            <td></td>
+            <td align="center" class="en">合计：<%=sum2%>
+            </td>
+        </tr>
+        <%}%>
+
+        <%}%>
+        </tbody>
+    </table>
+</form>
+<%db.close();%>
+<%rs.close();%>
+</body>
+</html>

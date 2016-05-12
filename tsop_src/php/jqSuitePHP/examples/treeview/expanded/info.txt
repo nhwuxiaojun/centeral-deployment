@@ -1,0 +1,2 @@
+The expanded property of each jqTreeNeode instance can be set to mark 
+the node as expanded. The JavaScript  tree.getExpandedNodes() holds a list of all expanded nodes on the client-side.

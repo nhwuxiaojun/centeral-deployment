@@ -1,0 +1,28 @@
+#!/usr/bin/expect   
+log_file -noappend myfile.log
+
+set HOST [lindex $argv 0]
+set USERNAME [lindex $argv 1]
+set PASSWORD [lindex $argv 2]
+set REMOTEPATH [lindex $argv 3]
+set FILENAME [lindex $argv 4]
+
+spawn telnet ${HOST}
+expect "login:"   
+send "${USERNAME}\r"   
+expect "Password:"   
+send "${PASSWORD}\r"   
+expect "*eBaoPrintService*"
+send "cd ${REMOTEPATH}\r"   
+expect "*eBaoPrintService*"
+send "unzip -o ${FILENAME}\r"
+sleep 90
+expect "*eBaoPrintService*"
+send "\r"
+sleep 20
+expect "*eBaoPrintService*"
+send "\r"
+sleep 20
+expect "*eBaoPrintService*"
+send "exit\r"
+interact

@@ -1,0 +1,56 @@
+ 
+--
+-- 表的结构 `customer`
+--
+
+CREATE TABLE IF NOT EXISTS `customer` (
+  `cus_id` int(11) NOT NULL auto_increment,
+  `cus_userid` int(11) NOT NULL,
+  `cus_name` varchar(20) default NULL,
+  `cus_address` varchar(200) default NULL,
+  `cus_pic` varchar(180) NOT NULL,
+  `cus_phone` varchar(20) default NULL,
+  `cus_email` varchar(20) default NULL,
+  `cus_com` varchar(100) default NULL,
+  `cus_dept` varchar(20) default NULL,
+  `cus_memo` tinytext,
+  `cus_subdate` date default NULL,
+  PRIMARY KEY  (`cus_id`),
+  KEY `cus_userid` (`cus_userid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+
+--
+-- 导出表中的数据 `customer`
+--
+
+INSERT INTO `customer` (`cus_id`, `cus_userid`, `cus_name`, `cus_address`, `cus_pic`, `cus_phone`, `cus_email`, `cus_com`, `cus_dept`, `cus_memo`, `cus_subdate`) VALUES
+(15, 1, 'Name2', 'dfds', 'uploadfiles/63809aab1abbdb16d3837b6b0d943835_1258438292_16031.gif', '13501764814', 'dsfsd@163.com', 'dsfsd', '2', '<p>fdsfsd</p>', '2009-04-12'),
+(16, 1, 'ggg', '地址', 'uploadfiles/bccc1a27fbf2ce005338d93657f3e01b_1258438362_17096.gif', '43534', '43534', '345345dfg', NULL, '', '2009-04-19'),
+(13, 1, '0', 'gfhfg', 'ssss', 'fghfg', 'fghfg@163.com', '543534', NULL, '', '0000-00-00'),
+(14, 1, '0', 'dfds', 'ssss', '13501764814', 'dsfsd@163.com', 'dsfsd', NULL, '<p>fdsfsd</p>', '2009-04-12'),
+(6, 1, 'PHP菜鸟1', '', 'ssss', 'wer', 'weichaoduo@163.com', '', NULL, '', '0000-00-00'),
+(17, 1, '0', 'dfds', 'ssss', '13501764814', 'dsfsd@163.com', 'dsfsd', NULL, '<p>fdsfsd</p>', '2009-04-12');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(11) NOT NULL auto_increment,
+  `user_name` varchar(20) default NULL,
+  `user_dept` tinyint(4) default NULL,
+  `user_role` tinyint(4) default NULL,
+  PRIMARY KEY  (`user_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- 导出表中的数据 `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_name`, `user_dept`, `user_role`) VALUES
+(1, '张3', NULL, NULL),
+(2, '李四', NULL, NULL),
+(3, '历史', NULL, NULL),
+(4, '文化', NULL, NULL);

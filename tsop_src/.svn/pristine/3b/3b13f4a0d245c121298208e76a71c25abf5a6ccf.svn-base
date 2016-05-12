@@ -1,0 +1,3 @@
+url=jdbc:oracle:thin:@172.16.7.189:1521:ora189
+user=TS_OP
+password=TS_0Pl

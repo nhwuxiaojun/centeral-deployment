@@ -1,0 +1,2 @@
+You can set the ImageUrl and ExpandedImageUrl properties to the 
+URL of images that will show before the node text in a treeview structure.

@@ -1,0 +1,75 @@
+.pacrudMenuBox {
+	box-shadow: 4px 4px 4px #BBBBBB;
+}
+
+.pacrudMenu {
+	display:block;
+	cursor:pointer;
+	background-color: #BEE09D;
+	text-indent:5px;
+}
+
+.pacrudMenuL1 {
+	cursor:pointer;
+	text-indent:5px;
+	
+	background: #dce8d0; /* Old browsers */
+	background: -webkit-linear-gradient(left,  #dce8d0 0%,#ebffe5 100%); /* Chrome10+,Safari5.1+ */
+	background: -ms-linear-gradient(left,  #dce8d0 0%,#ebffe5 100%); /* IE10+ */
+	background: linear-gradient(to right,  #dce8d0 0%,#ebffe5 100%); /* W3C */
+}
+.pacrudMenuL1:hover {
+	background:rgba(252,255,255,0)
+}
+
+.pacrudMenuL2 {
+	cursor: pointer;
+	text-indent:10px;
+	
+	background: #eef4e9; /* Old browsers */
+	background: -webkit-linear-gradient(left,  #eef4e9 0%,#f7fcf2 100%); /* Chrome10+,Safari5.1+ */
+	background: -ms-linear-gradient(left,  #eef4e9 0%,#f7fcf2 100%); /* IE10+ */
+	background: linear-gradient(to right,  #eef4e9 0%,#f7fcf2 100%); /* W3C */
+}
+.pacrudMenuL2:hover {
+	background:rgba(252,255,255,0)
+}
+
+.pacrudMenuL3 {
+	cursor: pointer;
+	text-indent:15px;
+	
+	background: #f7fcf2; /* Old browsers */
+	background: -webkit-linear-gradient(left,  #f7fcf2 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -ms-linear-gradient(left,  #f7fcf2 0%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to right,  #f7fcf2 0%,#ffffff 100%); /* W3C */
+}
+.pacrudMenuL3:hover {
+	background:rgba(252,255,255,0)
+}
+
+.pacrudMenuL4 {
+	cursor: pointer;
+	text-indent:20px;
+	
+	background: #f7fcf2; /* Old browsers */
+	background: -webkit-linear-gradient(left,  #f7fcf2 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -ms-linear-gradient(left,  #f7fcf2 0%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to right,  #f7fcf2 0%,#ffffff 100%); /* W3C */
+}
+.pacrudMenuL4:hover {
+	background:rgba(252,255,255,0)
+}
+
+.pacrudMenuL5 {
+	cursor: pointer;
+	text-indent:25px;
+	
+	background: #f7fcf2; /* Old browsers */
+	background: -webkit-linear-gradient(left,  #f7fcf2 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -ms-linear-gradient(left,  #f7fcf2 0%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to right,  #f7fcf2 0%,#ffffff 100%); /* W3C */
+}
+.pacrudMenuL5:hover {
+	background:rgba(252,255,255,0)
+}
